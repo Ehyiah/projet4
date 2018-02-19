@@ -35,12 +35,20 @@
 					<a href="http://projet4.gostiaux.net" id="logo">
 						<img src="images/logo.png" alt="Logo du site">
 					</a>
+					
+					<ul id="dropdown1" class="dropdown-content">
+						<li><a href="#!">one</a></li>
+						<li><a href="#!">two</a></li>
+						<li class="divider"></li>
+						<li><a href="#!">three</a></li>
+					</ul>
 
 					<ul class="right hide-on-med-and-down" id="menuDroit">
 						<li><a href="#"><i class="material-icons left">home</i>Accueil</a></li>
-						<li><a href=""><i class="material-icons left">local_library</i>Episodes</a></li>
+						<li><a href="" class="dropdown-trigger" data-target="dropdown1"><i class="material-icons left">local_library</i>Episodes<i class="material-icons right">arrow_drop_down</i></a></li>
 						<li><a href=""><i class="material-icons left">lock_open</i>Identification</a></li>
 					</ul>
+
 				</nav>
 			</div>
 
@@ -114,8 +122,10 @@
 					<!-- corps de l'épisode -->
 						<div class="col s12 m8 l9">
 							contenu épisode <br>
-							<?php echo "test affichage PHP";
-							?>
+							<?php echo "test affichage PHP";?>
+
+							<!-- INCLUDE PHP -->
+							<?php include("php/testinclude.html");?>
 						</div>
 
 					<!-- menu des épisodes et derniers commentaires -->
