@@ -32,9 +32,25 @@
 
 
 
+
+    /* DERNIERS BILLETS ET COMMENTAIRES */
+
+        /* DERNIERS BILLETS */
+            #billetdroit {
+                border: solid 1px rgba(51,51,51,0.12)
+            }
+        /* DERNIERS COMMENTAIRES */
+            #commentairedroit {
+                border: solid 1px rgba(51,51,51,0.12)
+            }
+
+
+
+
 /* FOOTER */
-    footer {
+    .page-footer {
         margin-top : 20px;
+        background-color: #039be5;
     }
 
 

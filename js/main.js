@@ -17,7 +17,8 @@
         $('.sidenav').sidenav();
     });
 
-
+// INITIALISATION menu dropdown
     $(document).ready(function(){
-        $(".dropdown-trigger").dropdown();
+        $(".dropdown-trigger").dropdown({hover: false});
     });
+
