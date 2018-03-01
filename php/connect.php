@@ -7,3 +7,9 @@ try
 } catch (Exception $e) {
     die ('Erreur : ' . $e->getMessage());
 }
+
+
+// récupération des billets
+    $reponse = $bdd->query('SELECT * FROM billet');
+
+    

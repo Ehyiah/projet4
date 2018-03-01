@@ -35,116 +35,129 @@
 
 
 		<!-- CONTENU CENTRAL DU SITE -->
-		<div class="container">
-			
-			<!-- SLIDER -->
-			<section class="slider">
-				<ul class="slides">
-					<li>
-						<img src="images/diapo/02.jpg">
-						<div class="caption center-align">
-							<h3 class="black-text text-darken-3">Bienvenue sur le blog de Jean Forteroche</h3>
-							<h5 class="black-text text-darken-3">Retrouvez régulièrement mes dernières publications</h5>
-						</div>
-					</li>
-					<li>
-						<img src="images/diapo/01.jpg">
-						<div class="caption center-align">
-							<h3 class="black-text text-darken-3">Mon dernier roman</h3>
-							<h5 class="black-text text-darken-3">se déroule sur une terre paradisiaque</h5>
-						</div>
-					</li>
-					<li>
-						<img src="images/diapo/03.jpg">
-						<div class="caption right-align">
-							<h3 class="black-text text-darken-3">Alors prenez donc un : </h3>
-							<h5 class="black-text text-darken-3">"Billet simple pour l'Alaska"</h5>
-						</div>
-					</li>
-				</ul>
-			</section>
-			
-			
-			<!-- CONTENU DU BLOG -->
-			<section id="contenu">
-
-				<div class="row">
-					<div class="col s12">
-						<h1>Bienvenue sur mon blog</h1>
-						<div class="divider"></div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col s12">
-						<p><strong>Vous retrouvez sur ce blog, en exclusivité la publication de mon nouveau roman dont voici le premier épisode</strong></p>
-						<div class="divider"></div>
-					</div>
-
-					<!-- corps de l'épisode -->
-						<div class="col s12 m8 l9">
-							contenu épisode <br>
-
-							<p> affichage contenu BDD titre épisode</p>
-
-							<?php
-								try {
-									$bdd = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-									// $bdd = new PDO('mysql:host=db724862783.db.1and1.com;dbname=db724862783;charset=utf8', 'dbo724862783', 'Chobits69');
-
-								} catch (Exception $e) {
-									die ('Erreur : ' . $e->getMessage());
-								}
-							
-								$reponse = $bdd->query('SELECT * FROM billet');
-
-								while ($donnees = $reponse->fetch()) {
-							?>
-								<p>Affichage Titre épisode de la BDD</p> <?php echo $donnees['TITRE'];?>
-							<?php
-								}
-								$reponse->closeCursor(); // Termine le traitement de la requête
-							?>
-
-						</div>
-
-					<!-- menu des épisodes et derniers commentaires -->
-						<div class="col s12 m4 l3">
-							<div class="row">
-								<div class="col s12">
-									<p>Liste des derniers épisodes</p>
-
-
-									<div class="divider"></div>
+			<div class="container">
+				
+				<!-- SLIDER -->
+					<section class="slider">
+						<ul class="slides">
+							<li>
+								<img src="images/diapo/02.jpg">
+								<div class="caption center-align">
+									<h3 class="black-text text-darken-3">Bienvenue sur le blog de Jean Forteroche</h3>
+									<h5 class="black-text text-darken-3">Retrouvez régulièrement mes dernières publications</h5>
 								</div>
+							</li>
+							<li>
+								<img src="images/diapo/01.jpg">
+								<div class="caption center-align">
+									<h3 class="black-text text-darken-3">Mon dernier roman</h3>
+									<h5 class="black-text text-darken-3">se déroule sur une terre paradisiaque</h5>
+								</div>
+							</li>
+							<li>
+								<img src="images/diapo/03.jpg">
+								<div class="caption right-align">
+									<h3 class="black-text text-darken-3">Alors prenez donc un : </h3>
+									<h5 class="black-text text-darken-3">"Billet simple pour l'Alaska"</h5>
+								</div>
+							</li>
+						</ul>
+					</section>
+				
+				
+				<!-- BLOG -->
+					<section id="contenu">
+
+						<div class="row">
+							<div class="col s12">
+								<h1>Bienvenue sur mon blog</h1>
+								<div class="divider"></div>
 							</div>
-							<div class="row">
-								<div class="col s12">
-									<p>Les 5 derniers commentaires</p>
-										<!-- RECUPERATION DES 5 DERNIERS COMMENTAIRES -->
+						</div>
+
+						<div class="row">
+							<div class="col s12">
+								<p><strong>Vous retrouvez sur ce blog, en exclusivité la publication de mon nouveau roman dont voici le premier épisode</strong></p>
+								<div class="divider"></div>
+							</div>
+
+							<!-- corps de l'épisode -->
+								<div class="col s12 m8 l9">
+									<p> affichage contenu BDD titre épisode</p>
+
+								<!-- affichage du premier billet -->							
+									<?php
+										while ($donnees = $lastBill->fetch()) {
+									?>
+										<div class="divider"></div>
+										<p>Titre épisode issu de la BDD : </p> <?php echo $donnees['TITRE'];?>
+										<p>ID du billet : </p> <?php echo $donnees['ID'];?>
+										<div class="divider"></div>
+
+										<em><a href="php/commentaires.php?id_billet=<?php echo $donnees['ID']; ?>">Commentaires</a></em>
+										
+										<em><a href="controller/postCom.php?id=<?php echo $donnees['ID']; ?>">Commentaires Test</a></em>
+										
+										
 										<?php
-											$comm = $bdd->query('SELECT * FROM commentaires ORDER BY ID DESC LIMIT 5');
-											while ($reponsecomm = $comm->fetch()) {
+										}
+										$lastBill->closeCursor(); // Termine le traitement de la requête
 										?>
-											<p>ID : <?php echo $reponsecomm['ID']; ?> </p>
-											<p>Auteur : <?php echo $reponsecomm['AUTEUR']; ?> </p>
-											<p>Commentaire : <?php echo $reponsecomm['CONTENU']; ?> </p>
-
-										<?php		
-											}
-											$comm->closeCursor();
-										?>
-
-
-									<div class="divider"></div>
+									<h2>Commentaires</h2>
+								
 								</div>
-							</div>
+
+							<!-- menu des épisodes et derniers commentaires -->
+								<div class="col s12 m4 l3" id="menudroit">
+									<div class="row" id="billetdroit">
+										<div class="col s12">
+											<p>Liste des derniers épisodes</p>
+											<div class="divider"></div>
+												<?php 
+													while ($reponsepost = $billets->fetch()) {
+
+												?>
+													<p>ID : <?php echo $reponsepost['ID']; ?></p>
+													<p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
+													<p>Titre : <?php echo $reponsepost['TITRE']; ?></p>
+													<div class="divider"></div>
+												<?php
+													}
+													$billets->closeCursor();
+												?>
+
+
+										</div>
+									</div>
+
+									<div class="row" id="commentairedroit">
+										<div class="col s12">
+											<p>Les 5 derniers commentaires</p>
+											<div class="divider"></div>
+												<!-- RECUPERATION DES 5 DERNIERS COMMENTAIRES -->
+												<?php
+													while ($reponsecomm = $comm->fetch()) {
+												?>
+													<p>ID : <?php echo $reponsecomm['ID']; ?> </p>
+													<p>Auteur : <?php echo $reponsecomm['AUTEUR']; ?> </p>
+													<p>Commentaire : <?php echo $reponsecomm['CONTENU']; ?> </p>
+
+													<div class="divider"></div>
+												<?php		
+													}
+													$comm->closeCursor();
+												?>
+
+
+											<div class="divider"></div>
+										</div>
+									</div>
+								</div>
 						</div>
-				</div>
-			</section>
+					</section>
 
 
-		</div>
+			</div>
 
 
 		<!-- FOOTER -->
