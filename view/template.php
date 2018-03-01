@@ -4,11 +4,11 @@
 		<!--Import Google Icon Font-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
-		<link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css"  media="screen,projection"/>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../public/css/style.css" />
         <title><?= $title ?> </title>
 		<!-- favicon -->
 		<link rel="icon" type="image/png" href="../images/favicon.png" />
@@ -34,7 +34,7 @@
 					<div class="navbar-fixed" id="menuDesktop">
 						<nav>
 							<a href="http://projet4.gostiaux.net" id="logo">
-								<img src="../images/logo.png" alt="Logo du site">
+								<img src="../public/images/logo.png" alt="Logo du site">
 							</a>
 
 							<!-- contenu menu déroulant pour les épisodes -->
@@ -59,7 +59,7 @@
 						<nav>
 							<div class="nav-wrapper" class="navbar-fixed">
 									<a href="http://projet4.gostiaux.net" id="logo">
-										<img src="../images/logo.png" alt="Logo du site">
+										<img src="../public/images/logo.png" alt="Logo du site">
 									</a>
 									<a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 							</div>
@@ -89,21 +89,21 @@
 					<section class="slider">
 						<ul class="slides">
 							<li>
-								<img src="../images/diapo/02.jpg">
+								<img src="../public/images/diapo/02.jpg">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Bienvenue sur le blog de Jean Forteroche</h3>
 									<h5 class="black-text text-darken-3">Retrouvez régulièrement mes dernières publications</h5>
 								</div>
 							</li>
 							<li>
-								<img src="../images/diapo/01.jpg">
+								<img src="../public/images/diapo/01.jpg">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Mon dernier roman</h3>
 									<h5 class="black-text text-darken-3">se déroule sur une terre paradisiaque</h5>
 								</div>
 							</li>
 							<li>
-								<img src="../images/diapo/03.jpg">
+								<img src="../public/images/diapo/03.jpg">
 								<div class="caption right-align">
 									<h3 class="black-text text-darken-3">Alors prenez donc un : </h3>
 									<h5 class="black-text text-darken-3">"Billet simple pour l'Alaska"</h5>
@@ -114,13 +114,14 @@
 				
 				
 				<!-- BLOG -->
-                    <section>
-                    	<?php echo $content ?>
-                    </section>
+					<!-- episode -->
+						<section>
+							<?php echo $content ?>
+						</section>
 
 
 
-			</div>
+			</div>	<!-- fin container -->
 
 
 		<!-- FOOTER -->
@@ -136,7 +137,7 @@
 
 		<!-- SCRIPTS -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	<!-- JQuery -->
-			<script type="text/javascript" src="../js/materialize.min.js"></script>						<!-- Materialize -->
-			<script src="../js/main.js"></script> 															<!-- JS d'initialisation -->
+			<script type="text/javascript" src="../public/js/materialize.min.js"></script>						<!-- Materialize -->
+			<script src="../public/js/main.js"></script> 															<!-- JS d'initialisation -->
     </body>
 </html>

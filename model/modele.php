@@ -18,7 +18,7 @@
 	};
 
 
-// fonction pour récupérer le dernier billet
+// fonction pour récupérer le premier billet
 	function getPost()
 	{
 		try
