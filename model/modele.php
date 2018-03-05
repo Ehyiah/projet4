@@ -1,5 +1,15 @@
 <?php
 
+// fonction pour ajouter les billets dans le menu
+	function billMenu() 
+	{
+		$db = dbConnect();
+		$req = $db->query('SELECT ID, TITRE FROM billet');
+		
+		return $req;
+	};
+
+
 // fonction pour récupérer les 5 derniers billets
 	function getPosts5()
 	{
@@ -53,4 +63,19 @@
 		return $req;
 	};
 
+
+
+
+	function dbConnect()
+    {
+        try
+        {
+            $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+            return $db;
+        }
+        catch(Exception $e)
+        {
+            die('Erreur : '.$e->getMessage());
+        }
+    };
 

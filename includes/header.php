@@ -18,7 +18,7 @@
                 <ul class="right hide-on-med-and-down" id="menuDroit">
                     <li><a href="http://projet4.gostiaux.net"><i class="material-icons left">home</i>Accueil</a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons left">local_library</i>Episodes<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="login.php"><i class="material-icons left">lock_open</i>Identification</a></li>
+                    <li><a href="view/login.php"><i class="material-icons left">lock_open</i>Identification</a></li>
                 </ul>
             </nav>
         </div>
@@ -45,7 +45,7 @@
                 <ul class="sidenav" id="mobile-menu">
                     <li><a href="http://projet4.gostiaux.net">Accueil</a></li>
                     <li><a href="#!" class="dropdown-trigger" data-target="dropdown2">Episodes</a></li>
-                    <li><a href="login.php">Identification</a></li>
+                    <li><a href="view/login.php">Identification</a></li>
                 </ul>
         </div>
 </header>

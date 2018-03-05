@@ -4,14 +4,14 @@
 		<!--Import Google Icon Font-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
-		<link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css"  media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../public/css/style.css" />
+		<link rel="stylesheet" href="public/css/style.css" />
         <title><?= $title ?> </title>
 		<!-- favicon -->
-		<link rel="icon" type="image/png" href="../images/favicon.png" />
+		<link rel="icon" type="image/png" href="public/images/favicon.png" />
 		<meta name="description" content="Blog de Jean Forteroche, écrivain">
 		<!-- Open Graph data -->
 		<meta property="og:title" content="Blog de Jean Forteroche, écrivain" />
@@ -34,22 +34,18 @@
 					<div class="navbar-fixed" id="menuDesktop">
 						<nav>
 							<a href="http://projet4.gostiaux.net" id="logo">
-								<img src="../public/images/logo.png" alt="Logo du site">
+								<img src="public/images/logo.png" alt="Logo du site">
 							</a>
 
 							<!-- contenu menu déroulant pour les épisodes -->
 								<ul id="dropdown1" class="dropdown-content">
-									<li><a href="#!">one</a></li>
-									<li class="divider"></li>
-									<li><a href="#!">two</a></li>
-									<li class="divider"></li>
-									<li><a href="#!">three</a></li>
+									<?php echo $contentMenu ?>
 								</ul>
-
+								
 							<ul class="right hide-on-med-and-down" id="menuDroit">
 								<li><a href="http://projet4.gostiaux.net"><i class="material-icons left">home</i>Accueil</a></li>
 								<li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons left">local_library</i>Episodes<i class="material-icons right">arrow_drop_down</i></a></li>
-								<li><a href="../login.php"><i class="material-icons left">lock_open</i>Identification</a></li>
+								<li><a href="index.php?action=login"><i class="material-icons left">lock_open</i>Identification</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -59,24 +55,20 @@
 						<nav>
 							<div class="nav-wrapper" class="navbar-fixed">
 									<a href="http://projet4.gostiaux.net" id="logo">
-										<img src="../public/images/logo.png" alt="Logo du site">
+										<img src="public/images/logo.png" alt="Logo du site">
 									</a>
 									<a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 							</div>
 						</nav>
 							<!-- elements du menu responsive -->
 								<ul id="dropdown2" class="dropdown-content">
-									<li><a href="#!">one</a></li>
-									<li class="divider"></li>
-									<li><a href="#!">two</a></li>
-									<li class="divider"></li>
-									<li><a href="#!">three</a></li>
+									<?php echo $contentMenu ?>
 								</ul>
 
 							<ul class="sidenav" id="mobile-menu">
 								<li><a href="http://projet4.gostiaux.net">Accueil</a></li>
 								<li><a href="#!" class="dropdown-trigger" data-target="dropdown2">Episodes</a></li>
-								<li><a href="../login.php">Identification</a></li>
+								<li><a href="index.php?action=login">Identification</a></li>
 							</ul>
 					</div>
 			</header>
@@ -89,21 +81,21 @@
 					<section class="slider">
 						<ul class="slides">
 							<li>
-								<img src="../public/images/diapo/02.jpg">
+								<img src="public/images/diapo/02.jpg">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Bienvenue sur le blog de Jean Forteroche</h3>
 									<h5 class="black-text text-darken-3">Retrouvez régulièrement mes dernières publications</h5>
 								</div>
 							</li>
 							<li>
-								<img src="../public/images/diapo/01.jpg">
+								<img src="public/images/diapo/01.jpg">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Mon dernier roman</h3>
 									<h5 class="black-text text-darken-3">se déroule sur une terre paradisiaque</h5>
 								</div>
 							</li>
 							<li>
-								<img src="../public/images/diapo/03.jpg">
+								<img src="public/images/diapo/03.jpg">
 								<div class="caption right-align">
 									<h3 class="black-text text-darken-3">Alors prenez donc un : </h3>
 									<h5 class="black-text text-darken-3">"Billet simple pour l'Alaska"</h5>
@@ -137,7 +129,7 @@
 
 		<!-- SCRIPTS -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	<!-- JQuery -->
-			<script type="text/javascript" src="../public/js/materialize.min.js"></script>						<!-- Materialize -->
-			<script src="../public/js/main.js"></script> 															<!-- JS d'initialisation -->
+			<script type="text/javascript" src="public/js/materialize.min.js"></script>						<!-- Materialize -->
+			<script src="public/js/main.js"></script> 															<!-- JS d'initialisation -->
     </body>
 </html>
