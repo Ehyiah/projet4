@@ -49,6 +49,7 @@
 									if(isset($_SESSION['PSEUDO'])) {
 								?>
 									<li><a href="index.php?action=logoff"><i class="material-icons left">lock_open</i>Deconnection</a></li>
+									<li><a href="index.php?action=login"><i class="material-icons left">contacts</i>Espace Membre</a></li>
 								<?php
 									} 
 									else {
@@ -89,7 +90,19 @@
 							<ul class="sidenav" id="mobile-menu">
 								<li><a href="http://projet4.gostiaux.net">Accueil</a></li>
 								<li><a href="#!" class="dropdown-trigger" data-target="dropdown2">Episodes</a></li>
-								<li><a href="index.php?action=login">Identification</a></li>
+								<?php 
+									if(isset($_SESSION['PSEUDO'])) {
+								?>
+									<li><a href="index.php?action=logoff"><i class="material-icons left">lock_open</i>Deconnection</a></li>
+									<li><a href="index.php?action=login"><i class="material-icons left">contacts</i>Espace Membre</a></li>
+								<?php
+									} 
+									else {
+								?>
+										<li><a href="index.php?action=login"><i class="material-icons left">lock_open</i>Identification</a></li>
+								<?php
+									}
+								?>
 							</ul>
 					</div>
 			</header>

@@ -19,6 +19,8 @@ function authUser($resultat) {
 
     if ($_POST['mot_de_passe'] == $resultat['PASS']) {
         $passCorrect = true;
+    } else {
+        $passCorrect = false;
     }
 
     // var_dump($passCorrect);
@@ -31,9 +33,6 @@ function authUser($resultat) {
             $_SESSION['ID'] = $resultat['ID'];
             $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
             // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
-        }
-        else {
-            echo 'mauvais identifiant ou mot de passe 2';
         }
     }
 };
