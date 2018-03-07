@@ -1,5 +1,8 @@
 <?php
 require_once('model/modele.php');
+require_once('model/dbManager.php');
+
+
 
 function viewHome()
     {
@@ -7,22 +10,6 @@ function viewHome()
         $comm = getComs5();
         $firstBill = getPost();
         $billMenu = billMenu();
-
-        
-        ob_start(); ?>
-            <?php 
-                foreach($billMenu as $menu)
-                {
-            ?>
-<!--                <li><a href="controller/controllerCom.php?id=<?php echo $menu['ID']; ?>"><?php echo $menu['TITRE'] ?></a></li> -->
-                <li><a href="index.php?action=bill&amp;id=<?php echo $menu['ID']; ?>"><?php echo $menu['TITRE'] ?></a></li>
-                <li class="divider"></li>
-
-            <?php
-                }
-            ?>
-        <?php $contentMenuHome = ob_get_clean();
-
 
         require('view/home.php');
     };

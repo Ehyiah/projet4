@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once('controller/controller.php');
 require_once('controller/controllerCom.php');
 require_once('controller/controllerLogin.php');
@@ -33,11 +35,27 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'login') {
+        displayLogin();
+    }   
+    
+    
+    elseif ($_GET['action'] == 'loginSubmit') {
+        $resultat = login($_POST['nom']);
+        authUser($resultat);
+        
+        displayLogin();
+
         // si identifiant reconnu
         
         // si inconnu
-            displayLogin();
     }
+
+    elseif ($_GET['action'] == 'logoff') {
+            $_SESSION = array();    
+            session_destroy();
+            displayLogin();
+    }   
+
 
     elseif ($_GET['action'] == 'bill') {
         displayBill();

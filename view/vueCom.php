@@ -1,4 +1,6 @@
-<?php $title = "test de titre pour page template"; ?>
+<?php $titreTemplate = $post['TITRE'] ?>
+
+<?php $title = $titreTemplate; ?>
 
 
 <?php ob_start(); ?>
@@ -30,16 +32,19 @@
 
         <h4>Ajouter un commentaire</h4>
             <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>" method="post">
-                <div>
-                    <label for="author">Auteur</label><br />
+                <div class="input-field col s12">
                     <input type="text" id="author" name="author" />
+                    <label for="author">Auteur</label><br />
                 </div>
                 <div>
                     <label for="comment">Commentaire</label><br />
                     <textarea id="comment" name="comment"></textarea>
                 </div>
                 <div>
-                    <input type="submit" />
+                <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
+                    <i class="material-icons right">send</i>
+                </button>
+                    <!-- <input type="submit" /> -->
                 </div>
             </form>
 

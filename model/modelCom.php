@@ -2,7 +2,9 @@
 
 function getPost0($postId)
     {
-        $db = dbConnect();
+        $bdd = new DbManager();
+        $db = $bdd->dbConnect();
+
         $req = $db->prepare('SELECT * FROM billet WHERE ID = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
@@ -12,7 +14,9 @@ function getPost0($postId)
 
 function getComments0($postId)
     {
-        $db = dbConnect();
+        $bdd = new DbManager();
+
+        $db = $bdd->dbConnect();
         $comments = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = ?');
         $comments->execute(array($postId));
 
@@ -24,8 +28,10 @@ function getComments0($postId)
 function postComment($postId, $author, $comment)
     {
         // var_dump($postId);        var_dump($author);        var_dump($comment);
-        
-        $db = dbConnect();
+        $bdd = new DbManager();
+
+
+        $db = $bdd->dbConnect();
         $comments = $db->prepare('INSERT INTO commentaires(ID_BILLET, AUTEUR, CONTENU) VALUES(:ID_BILLET, :AUTEUR, :CONTENU)');
         $affectedLines = $comments->execute(array(
             'ID_BILLET' => $postId,
@@ -36,23 +42,3 @@ function postComment($postId, $author, $comment)
         return $affectedLines;
     };
 
-
-
-
-
-
-
-/*
-    function dbConnect()
-    {
-        try
-        {
-            $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-            return $db;
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
-    };
-*/

@@ -9,7 +9,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="public/css/style.css" />
-        <title><?= $title ?> </title>
+        <title>Jean Forteroche, "Billet simple pour l'Alaska"</title>
 		<!-- favicon -->
 		<link rel="icon" type="image/png" href="public/images/favicon.png" />
 		<meta name="description" content="Blog de Jean Forteroche, écrivain">
@@ -39,36 +39,15 @@
 
 							<!-- contenu menu déroulant pour les épisodes -->
 								<ul id="dropdown1" class="dropdown-content">
-									<?php echo $contentMenu ?>
+									<?php echo $contentMenuHome ?>
 								</ul>
-								
+
 							<ul class="right hide-on-med-and-down" id="menuDroit">
 								<li><a href="http://projet4.gostiaux.net"><i class="material-icons left">home</i>Accueil</a></li>
 								<li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons left">local_library</i>Episodes<i class="material-icons right">arrow_drop_down</i></a></li>
-								<?php 
-									if(isset($_SESSION['PSEUDO'])) {
-								?>
-									<li><a href="index.php?action=logoff"><i class="material-icons left">lock_open</i>Deconnection</a></li>
-								<?php
-									} 
-									else {
-								?>
-										<li><a href="index.php?action=login"><i class="material-icons left">lock_open</i>Identification</a></li>
-								<?php
-									}
-								?>
+								<li><a href="index.php?action=login"><i class="material-icons left">lock_open</i>Identification</a></li>
 							</ul>
-
-
-
-							<!-- test afficchage pseudo par session -->
-							<?php
-								if (isset($_SESSION['PSEUDO'])) {
-									echo 'Bonjour ' . $_SESSION['PSEUDO'];
-								};
-							?>
 						</nav>
-
 					</div>
 
 				<!-- menu mobile responsive -->
@@ -83,7 +62,7 @@
 						</nav>
 							<!-- elements du menu responsive -->
 								<ul id="dropdown2" class="dropdown-content">
-									<?php echo $contentMenu ?>
+									<?php echo $contentMenuHome ?>
 								</ul>
 
 							<ul class="sidenav" id="mobile-menu">
@@ -92,7 +71,8 @@
 								<li><a href="index.php?action=login">Identification</a></li>
 							</ul>
 					</div>
-			</header>
+				</header>
+
 
 
 		<!-- CONTENU CENTRAL DU SITE -->
@@ -127,14 +107,96 @@
 				
 				
 				<!-- BLOG -->
-					<!-- episode -->
-						<section>
-							<?php echo $content ?>
-						</section>
+					<section id="contenu">
+
+						<div class="row">
+							<div class="col s12">
+								<h1>Bienvenue sur mon blog</h1>
+								<div class="divider"></div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col s12">
+								<p><strong>Vous retrouvez sur ce blog, en exclusivité la publication de mon nouveau roman dont voici le premier épisode</strong></p>
+								<div class="divider"></div>
+							</div>
+
+							<!-- corps de l'épisode -->
+								<div class="col s12 m8 l9">
+									<p> affichage contenu BDD titre épisode</p>
+
+								<!-- affichage du premier billet -->							
+									<?php
+										while ($donnees = $firstBill->fetch()) {
+									?>
+										<div class="divider"></div>
+										<p>Titre épisode issu de la BDD : </p> <?php echo $donnees['TITRE'];?>
+										<p>ID du billet : </p> <?php echo $donnees['ID'];?>
+										<div class="divider"></div>
+
+									
+										<em><a href="index.php?action=bill&amp;id=<?php echo $donnees['ID']; ?>">Commentaires Test</a></em>
+										
+										
+										<?php
+										}
+										$firstBill->closeCursor(); // Termine le traitement de la requête
+										?>
+									<h2>Commentaires</h2>
+
+								
+								</div>
+
+							<!-- menu des épisodes et derniers commentaires -->
+								<div class="col s12 m4 l3" id="menudroit">
+									<div class="row" id="billetdroit">
+										<div class="col s12">
+											<p>Liste des derniers épisodes</p>
+											<div class="divider"></div>
+												<?php 
+													while ($reponsepost = $billets->fetch()) {
+
+												?>
+													<p>ID : <?php echo $reponsepost['ID']; ?></p>
+													<p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
+													<p>Titre : <?php echo $reponsepost['TITRE']; ?></p>
+													<div class="divider"></div>
+												<?php
+													}
+													$billets->closeCursor();
+												?>
 
 
+										</div>
+									</div>
 
-			</div>	<!-- fin container -->
+									<div class="row" id="commentairedroit">
+										<div class="col s12">
+											<p>Les 5 derniers commentaires</p>
+											<div class="divider"></div>
+												<!-- RECUPERATION DES 5 DERNIERS COMMENTAIRES -->
+												<?php
+													while ($reponsecomm = $comm->fetch()) {
+												?>
+													<p>ID : <?php echo $reponsecomm['ID']; ?> </p>
+													<p>Auteur : <?php echo $reponsecomm['AUTEUR']; ?> </p>
+													<p>Commentaire : <?php echo $reponsecomm['CONTENU']; ?> </p>
+
+													<div class="divider"></div>
+												<?php		
+													}
+													$comm->closeCursor();
+												?>
+
+
+											<div class="divider"></div>
+										</div>
+									</div>
+								</div>
+						</div>
+					</section>
+			</div>
 
 
 		<!-- FOOTER -->
@@ -144,8 +206,6 @@
 					<div class="divider"></div>
 				</div>
 			</footer>
-
-
 
 
 		<!-- SCRIPTS -->
