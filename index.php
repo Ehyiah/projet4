@@ -47,11 +47,10 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'signIn') {
-        newUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
-
-
-        // test git
-
+        // newUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
+   
+        // appelle des fonctions qui vérifie si utilisateur deja enregistré puis création de l'utilisateur
+        registerUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
     }  
 
     elseif ($_GET['action'] == 'logout') {

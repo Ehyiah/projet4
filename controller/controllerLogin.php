@@ -36,14 +36,31 @@ function authUser($resultat) {
 };
 
 
+/*
+    function newUser($nom, $mot_de_passe, $email) {
+        $register = isNewUser($nom, $mot_de_passe, $email);
 
-function newUser($nom, $mot_de_passe, $email) {
-    $register = isNewUser($nom, $mot_de_passe, $email);
+        if ($register === false) {
+            die('impossible de créer le nouvel utilisateur');
+        } else {
+            displayLogin();
+        }
+    ;}   
+*/
 
-    if ($register === false) {
-        die('impossible de créer le nouvel utilisateur');
-    } else {
-        displayLogin();
-    }
-;}   
 
+// appelle de la fonction depuis l'index
+    // function (3 paramètres)
+        // premier appel BDD pour vérifier si utilisateur deja présent
+            // si réponse > 0 alors utilisateur deja enregistré
+            // sinon on crée le nouvel utilisateur avec une second fonction
+
+function registerUser($nom,$mot_de_passe,$email) {
+    checkIfUserExist($nom);
+        if ($userExist > 0) {
+            echo 'utilisateur deja enregistré';
+        } else {
+            createNewUser($nom, $mot_de_passe, $email);
+            echo 'nouvel utilisateur créé';
+        }
+};
