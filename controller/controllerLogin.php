@@ -9,8 +9,6 @@ function displayLogin() {
 
 
 
-
-
 function authUser($resultat) {
     // var_dump($resultat);
     // var_dump($_POST['mot_de_passe']);
@@ -37,4 +35,15 @@ function authUser($resultat) {
     }
 };
 
+
+
+function newUser($nom, $mot_de_passe, $email) {
+    $register = isNewUser($nom, $mot_de_passe, $email);
+
+    if ($register === false) {
+        die('impossible de créer le nouvel utilisateur');
+    } else {
+        displayLogin();
+    }
+;}   
 

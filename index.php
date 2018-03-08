@@ -44,13 +44,17 @@ if (isset($_GET['action'])) {
         authUser($resultat);
         
         displayLogin();
-
-        // si identifiant reconnu
-        
-        // si inconnu
     }
 
-    elseif ($_GET['action'] == 'logoff') {
+    elseif ($_GET['action'] == 'signIn') {
+        newUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
+
+
+        
+
+    }  
+
+    elseif ($_GET['action'] == 'logout') {
             $_SESSION = array();    
             session_destroy();
             displayLogin();

@@ -22,3 +22,7 @@
         $(".dropdown-trigger").dropdown({hover: false});
     });
 
+// INITIALISATION COLLAPSE PAGE LOGIN
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });

@@ -48,7 +48,7 @@
 								<?php 
 									if(isset($_SESSION['PSEUDO'])) {
 								?>
-									<li><a href="index.php?action=logoff"><i class="material-icons left">lock_open</i>Deconnection</a></li>
+									<li><a href="index.php?action=logout"><i class="material-icons left">lock_open</i>Deconnection</a></li>
 									<li><a href="index.php?action=login"><i class="material-icons left">contacts</i>Espace Membre</a></li>
 								<?php
 									} 
@@ -93,7 +93,7 @@
 								<?php 
 									if(isset($_SESSION['PSEUDO'])) {
 								?>
-									<li><a href="index.php?action=logoff"><i class="material-icons left">lock_open</i>Deconnection</a></li>
+									<li><a href="index.php?action=logout"><i class="material-icons left">lock_open</i>Deconnection</a></li>
 									<li><a href="index.php?action=login"><i class="material-icons left">contacts</i>Espace Membre</a></li>
 								<?php
 									} 
