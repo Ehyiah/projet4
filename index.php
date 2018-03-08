@@ -50,7 +50,7 @@ if (isset($_GET['action'])) {
         newUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
 
 
-        
+        // second test git
 
     }  
 
