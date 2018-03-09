@@ -29,7 +29,15 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="collapsible-header">Pas encore inscrit ?</div>
+                                <div class="collapsible-header">Pas encore inscrit ? </br>
+                                <strong>
+                                <?php
+                                if (isset($etat)) {
+                                    echo $etat;
+                                }
+                                ?>
+                                </strong>
+                                </div>
                                     <div class="collapsible-body">
                                         <form action="index.php?action=signUp" method="post">
                                             <div class="input-field col s12">
@@ -59,14 +67,15 @@
                 }
 
                 // si le pseudo est celui de l'admin
-                elseif ($_SESSION['PSEUDO'] == 'Jean') 
+                elseif ($_SESSION['PSEUDO'] == 'Jean' || $_SESSION['PSEUDO'] == 'Matt') 
                 { $title = 'Bonjour';
                 ?>
-                    <p> Bonjour Jean </p>
+                    <p> Bonjour </p>
                     <div class="divider"></div>
 
                     <!-- on affiche ici ce que l'admin a besoin de voir -->
 
+                    <textarea>Next, start a free trial!</textarea>
 
 
 

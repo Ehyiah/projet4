@@ -8,42 +8,53 @@ function displayLogin() {
 };
 
 
-
-function authUser($resultat) {
-    // var_dump($resultat);
-    // var_dump($_POST['mot_de_passe']);
-
-    // $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
-
-    if ($_POST['mot_de_passe'] == $resultat['PASS']) {
-        $passCorrect = true;
-    } else {
-        $passCorrect = false;
+// fonction pour utilisateur deja enregistré
+    function displayLoginError($etat) {
+        $billMenu = billMenu();
+        require ('view/login.php');
     }
 
-    // var_dump($passCorrect);
-    
-    if (!$resultat) {
-        echo 'mauvais identifiant ou mot de passe';
-    }   
-    else {
-        if ($passCorrect) {
-            $_SESSION['ID'] = $resultat['ID'];
-            $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
-            // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
+
+// fonction pour la connection de l'utilisateur
+
+    function authUser($resultat) {
+        // var_dump($resultat);
+        // var_dump($_POST['mot_de_passe']);
+
+        // $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
+
+        if ($_POST['mot_de_passe'] == $resultat['PASS']) {
+            $passCorrect = true;
+        } else {
+            $passCorrect = false;
         }
-    }
-};
+
+        // var_dump($passCorrect);
+        
+        if (!$resultat) {
+            echo 'mauvais identifiant ou mot de passe';
+        }   
+        else {
+            if ($passCorrect) {
+                $_SESSION['ID'] = $resultat['ID'];
+                $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
+                // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
+            }
+        }
+    };
 
 
 
-function newUser($nom, $mot_de_passe, $email) {
-    $register = isNewUser($nom, $mot_de_passe, $email);
 
-    if ($register === false) {
-        die('impossible de créer le nouvel utilisateur');
-    } else {
-        displayLogin();
-    }
-;}   
+// fonction de vérification et de création de nouveaux membres
 
+    function registerUser($nom,$mot_de_passe,$email) {
+        $userExist = checkIfUserExist($nom);
+            if ($userExist > 0) {
+                $etat = 1;
+            } else {
+                createNewUser($nom, $mot_de_passe, $email);
+                $etat = 0;
+            }
+        return $etat;
+    };

@@ -47,10 +47,16 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'signUp') {
-        newUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
-
-
-
+        // appelle des fonctions qui vérifie si utilisateur deja enregistré puis création de l'utilisateur
+        $etat = registerUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
+            if ($etat > 0) {
+                // utilisateur existe deja
+                $etat = 'utilisateur deja enregistré';
+                displayLoginError($etat);
+            } else {
+                // nouvel utilisateur a été créé on redirige vers la page des membres
+                displayLogin();
+            }
     }  
 
     elseif ($_GET['action'] == 'logout') {

@@ -29,24 +29,36 @@
         }
         ?>
 
+        <?php
+            if (isset($_SESSION['PSEUDO'])) {
+                ?>
+                <h4>Ajouter un commentaire</h4>
+                    <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>" method="post">
+                        <div class="input-field col s12">
+                            <input type="text" id="author" name="author" />
+                            <label for="author">Auteur</label><br />
+                        </div>
+                        <div>
+                            <label for="comment">Commentaire</label><br />
+                            <textarea id="comment" name="comment"></textarea>
+                        </div>
+                        <div>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
+                            <i class="material-icons right">send</i>
+                        </button>
+                            <!-- <input type="submit" /> -->
+                        </div>
+                    </form>
+        <?php
+            } else {
+                ?>
+                <h4>Ajouter un commentaire</h4>
+                <a href="index.php?action=login"><i class="material-icons left">lock_open</i><p><strong>Vous devez être connecté pour laisser un commentaire</strong></p></a>
 
-        <h4>Ajouter un commentaire</h4>
-            <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>" method="post">
-                <div class="input-field col s12">
-                    <input type="text" id="author" name="author" />
-                    <label for="author">Auteur</label><br />
-                </div>
-                <div>
-                    <label for="comment">Commentaire</label><br />
-                    <textarea id="comment" name="comment"></textarea>
-                </div>
-                <div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
-                    <i class="material-icons right">send</i>
-                </button>
-                    <!-- <input type="submit" /> -->
-                </div>
-            </form>
+                <?php
+            }
+        ?>
+
 
 <?php $content = ob_get_clean(); ?>
 

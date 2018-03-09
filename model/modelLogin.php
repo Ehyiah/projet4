@@ -1,5 +1,7 @@
 <?php
 
+// foncton de login
+
 function login($pseudo)
     {
         $bdd = new dbManager();
@@ -15,36 +17,30 @@ function login($pseudo)
     };
     
 
+// nouvelles fonctions création membres
 
-
-function isNewUser($nom, $mot_de_passe, $email) 
-    {
+    function checkIfUserExist($nom) {
         $bdd = new dbManager();
         $db = $bdd->dbConnect();
 
-
-        $reqExist = $db->prepare('SELECT EXISTS (SELECT * FROM users WHERE PSEUDO = :pseudo)');
-        $reqExist->execute(array(
-            'pseudo' => $nom
+        $req = $db->prepare('SELECT EXISTS(SELECT * FROM users WHERE PSEUDO = :pseudo)');
+        $req->execute(array(
+            'pseudo' =>$nom
         ));
 
-        $exist = $reqExist->fetchColumn();
-        
-
-        // si speudo deja présent
-        if ($exist > 0) {
-            echo 'utilisateur deja enregistré';
-        }
-
-        // sinon on crée le nouvel utilisateur
-        else {
-            $req = $db->prepare('INSERT INTO users(PSEUDO, PASS, MAIL) VALUES (:pseudo, :pass, :email)');
-            $register = $req->execute(array(
-                'pseudo' => $nom,
-                'pass' => $mot_de_passe,
-                'email' => $email
-            ));
-            return $register;
-        }
-
+        $userExist = $req->fetchColumn();
+        return $userExist;
     };
+
+    function createNewUser($nom, $mot_de_passe, $email) {
+        $bdd = new dbManager();
+        $db = $bdd->dbConnect();
+
+        $req = $db->prepare('INSERT INTO users(PSEUDO, PASS, MAIL) VALUES(:pseudo, :pass, :email)');
+        $req->execute(array(
+            'pseudo' => $nom,
+            'pass' => $mot_de_passe,
+            'email' => $email
+        ));
+    };
+
