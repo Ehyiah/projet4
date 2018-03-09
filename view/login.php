@@ -31,7 +31,7 @@
                             <li>
                                 <div class="collapsible-header">Pas encore inscrit ?</div>
                                     <div class="collapsible-body">
-                                        <form action="index.php?action=signIn" method="post">
+                                        <form action="index.php?action=signUp" method="post">
                                             <div class="input-field col s12">
                                                 <input id="name" type="text" name="nom"/>
                                                 <label for="name">Nom</label>

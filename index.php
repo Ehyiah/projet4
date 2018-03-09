@@ -46,11 +46,10 @@ if (isset($_GET['action'])) {
         displayLogin();
     }
 
-    elseif ($_GET['action'] == 'signIn') {
+    elseif ($_GET['action'] == 'signUp') {
         newUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
 
 
-        // second test git
 
     }  
 
