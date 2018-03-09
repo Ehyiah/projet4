@@ -66,19 +66,27 @@
                 <?php
                 }
 
-                // si le pseudo est celui de l'admin
-                elseif ($_SESSION['PSEUDO'] == 'Jean' || $_SESSION['PSEUDO'] == 'Matt') 
-                { $title = 'Bonjour';
+                // si le pseudo est celui d'un admin (GROUPE = 1 dans BDD)
+                elseif ($_SESSION['GROUPE'] == 1) 
+                { $title = 'Espace Administration';
                 ?>
-                    <p> Bonjour </p>
-                    <div class="divider"></div>
+                    <div class="container">
+                        <p> Bonjour </p>
+                        <div class="divider"></div>
+
+                            <!-- création nouvel épisode -->
+                            <form action="index.php?action=newEpisode" method="post">
+                                <textarea id="mytexttitle" name="titreEpisode">Titre de l'épisode</textarea>
+                                <textarea id="mytextarea" name="contenuEpisode">Contenu de l'épisode</textarea>
+                                <button class="btn waves-effect waves-light" type="submit" name="publish">Publier nouvel épisode
+                                    <i class="material-icons right">send</i>
+                            </form>
 
                     <!-- on affiche ici ce que l'admin a besoin de voir -->
 
-                    <textarea>Next, start a free trial!</textarea>
+                    <!-- lien vers la création des nouveaux billets ou d'édition -->
 
-
-
+                    </div>
                 <?php
                 }
 
@@ -88,11 +96,12 @@
                 { $title = 'Espace Membre';
                 ?>
                     <div class="container">
-                        <p class="center-align"> Bienvenue <?= $_SESSION['PSEUDO'] ?>, vous êtes maintenant connecté dans votre espace personnel</p>
+                        <p class="center-align"> Bienvenue <?= $_SESSION['PSEUDO'] ?>, vous êtes maintenant dans votre espace personnel</p>
                         <div class="divider"></div>
 
                         <!-- on affiche ici ce que l'utilisateur standard va avoir besoin dans son espace perso -->
 
+                        <!-- liste des commentaires deja postés par le membre -->
 
 
                     </div>

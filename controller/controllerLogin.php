@@ -38,6 +38,7 @@ function displayLogin() {
             if ($passCorrect) {
                 $_SESSION['ID'] = $resultat['ID'];
                 $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
+                $_SESSION['GROUPE'] = $resultat['GROUPE'];
                 // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
             }
         }
@@ -58,3 +59,4 @@ function displayLogin() {
             }
         return $etat;
     };
+

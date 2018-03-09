@@ -4,6 +4,7 @@ session_start();
 require_once('controller/controller.php');
 require_once('controller/controllerCom.php');
 require_once('controller/controllerLogin.php');
+require_once('controller/controllerNewEpisode.php');
 
 
 if (isset($_GET['action'])) {
@@ -46,6 +47,7 @@ if (isset($_GET['action'])) {
         displayLogin();
     }
 
+
     elseif ($_GET['action'] == 'signUp') {
         // appelle des fonctions qui vérifie si utilisateur deja enregistré puis création de l'utilisateur
         $etat = registerUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
@@ -59,6 +61,7 @@ if (isset($_GET['action'])) {
             }
     }  
 
+
     elseif ($_GET['action'] == 'logout') {
             $_SESSION = array();    
             session_destroy();
@@ -69,6 +72,13 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'bill') {
         displayBill();
     }
+
+    elseif ($_GET['action'] == 'newEpisode') {
+        newEpisode($_POST['titreEpisode'], $_POST['contenuEpisode']);
+        displayLogin();
+
+    }
+
 
 }
 else {

@@ -1,13 +1,13 @@
 <?php
 
-// foncton de login
+// fonction de login
 
 function login($pseudo)
     {
         $bdd = new dbManager();
         $db = $bdd->dbConnect();
 
-        $req = $db->prepare('SELECT ID, PASS, PSEUDO FROM users WHERE PSEUDO = :pseudo');
+        $req = $db->prepare('SELECT ID, PASS, PSEUDO, GROUPE FROM users WHERE PSEUDO = :pseudo');
         $req->execute(array(
             'pseudo' => $pseudo
         ));
@@ -17,7 +17,7 @@ function login($pseudo)
     };
     
 
-// nouvelles fonctions création membres
+// fonctions création membres
 
     function checkIfUserExist($nom) {
         $bdd = new dbManager();

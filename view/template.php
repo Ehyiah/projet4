@@ -25,6 +25,10 @@
 		<meta name="twitter:title" content="Jean Forteroche, Billet simple pour l'Alaska">
 		<meta name="twitter:description" content="Blog de Jean Forteroche, écrivain">
 		<meta name="twitter:image" content="http://projet4.gostiaux.net/images/logo.png">
+		
+		<!-- tinyMCE -->
+		<!-- <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script> -->
+		<script src="public/tinymce/tinymce.min.js"></script>
     </head>
 
     <body>
