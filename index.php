@@ -5,6 +5,7 @@ require_once('controller/controller.php');
 require_once('controller/controllerCom.php');
 require_once('controller/controllerLogin.php');
 require_once('controller/controllerNewEpisode.php');
+require_once('controller/controllerUpdateEpisode.php');
 
 
 if (isset($_GET['action'])) {

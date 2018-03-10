@@ -79,8 +79,11 @@
                                 <textarea id="mytexttitle" name="titreEpisode">Titre de l'épisode</textarea>
                                 <textarea id="mytextarea" name="contenuEpisode">Contenu de l'épisode</textarea>
                                 <button class="btn waves-effect waves-light" type="submit" name="publish">Publier nouvel épisode
-                                    <i class="material-icons right">send</i>
+                                    <i class="material-icons right">send</i></button>
                             </form>
+
+                            <!-- modification épisode -->
+                            <?php require('view/EpisodeUpdate.php'); ?>
 
                     <!-- on affiche ici ce que l'admin a besoin de voir -->
 
