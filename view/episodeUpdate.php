@@ -24,12 +24,10 @@
             }
             $billets->closeCursor();
         ?>
-
-
-
     <?php $episodeUpdate = ob_get_clean(); ?>
 
-
+<!-- au clic sur l'épisode renvoyer vers la page login en ajoutant un include dans la vue
+contenant l'épisode à l'aide de variables -->
 
 
 <!-- partie concernant la suppression des épisodes -->
@@ -45,7 +43,7 @@
             while ($reponsepost = $billets->fetch()) {
 
         ?>
-            <a href="index.php?idBill=<?php echo $reponsepost['ID']?>&amp;action=episodeDelete">
+            <a href="index.php?idBill=<?php echo $reponsepost['ID']?>&amp;action=episodeDelete#deleteEpisode">
             <?= $reponsepost['TITRE']; ?></a>
             
             <p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
@@ -70,8 +68,8 @@
             <p><strong>Auteur du commentaire : </strong> <?= $reponsecom['AUTEUR_COM']?></p>
             <p><strong>Contenu du commentaire : </strong> <?= $reponsecom['CONTENU'] ?></p>
             <strong><?= $reponsecom['TITRE_BILLET'] ?></strong>
-            <a href="index.php?action=comDelete&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active">Supprimer le commentaire </a>
-            <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active"> Valider le commentaire</a>
+            <a href="index.php?action=comDelete&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom">Supprimer le commentaire </a>
+            <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom"> Valider le commentaire</a>
             <div class="divider"></div>
         <?php
             }
