@@ -40,14 +40,11 @@ if (isset($_GET['action'])) {
         displayLogin();
     }   
     
-    
     elseif ($_GET['action'] == 'loginSubmit') {
         $resultat = login($_POST['nom']);
         authUser($resultat);
-        
         displayLogin();
     }
-
 
     elseif ($_GET['action'] == 'signUp') {
         // appelle des fonctions qui vérifie si utilisateur deja enregistré puis création de l'utilisateur
@@ -62,7 +59,6 @@ if (isset($_GET['action'])) {
             }
     }  
 
-
     elseif ($_GET['action'] == 'logout') {
             $_SESSION = array();    
             session_destroy();
@@ -74,10 +70,31 @@ if (isset($_GET['action'])) {
         displayBill();
     }
 
+
     elseif ($_GET['action'] == 'newEpisode') {
         newEpisode($_POST['titreEpisode'], $_POST['contenuEpisode']);
         displayLogin();
 
+    }
+
+    elseif ($_GET['action'] == 'episodeUpdate') {
+        updateEpisode();
+    }
+
+    elseif ($_GET['action'] == 'episodeDelete') {
+        deleteEpisode($_GET['idBill']);
+        header("Location: ".$_SERVER['HTTP_REFERER']."");
+    }
+
+
+    elseif ($_GET['action'] == 'comDelete') {
+        deleteSignaledCom($_GET['idCom']);
+        header("Location: ".$_SERVER['HTTP_REFERER']."");
+    }
+
+    elseif ($_GET['action'] == 'comValidate') {
+        acceptSignaledCom($_GET['idCom']);
+        displayLogin();        
     }
 
 
@@ -85,9 +102,5 @@ if (isset($_GET['action'])) {
 else {
     viewHome();
 }
-
-
-
-
 
 

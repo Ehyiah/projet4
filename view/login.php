@@ -71,23 +71,63 @@
                 { $title = 'Espace Administration';
                 ?>
                     <div class="container">
-                        <p> Bonjour </p>
+                        <p> Bonjour et bienvenue dans votre espace personnel</p>
                         <div class="divider"></div>
 
+                    <!-- on affiche ici ce que l'admin a besoin de voir -->
+                        <ul class="collapsible popout">
                             <!-- création nouvel épisode -->
-                            <form action="index.php?action=newEpisode" method="post">
-                                <textarea id="mytexttitle" name="titreEpisode">Titre de l'épisode</textarea>
-                                <textarea id="mytextarea" name="contenuEpisode">Contenu de l'épisode</textarea>
-                                <button class="btn waves-effect waves-light" type="submit" name="publish">Publier nouvel épisode
-                                    <i class="material-icons right">send</i></button>
-                            </form>
+                            <li id="newEpisode">
+                                <div class="collapsible-header"><i class="material-icons">add</i>Ecrire un épisode</div>
+                                <div class="collapsible-body">
+                                <form action="index.php?action=newEpisode" method="post">
+                                    <textarea id="mytexttitle" name="titreEpisode">Titre de l'épisode</textarea>
+                                    <textarea id="mytextarea" name="contenuEpisode">Contenu de l'épisode</textarea>
+                                    <button class="btn waves-effect waves-light" type="submit" name="publish">Publier nouvel épisode
+                                        <i class="material-icons right">send</i></button>
+                                </form>
+                                </div>
+                            </li>
 
                             <!-- modification épisode -->
-                            <?php require('view/EpisodeUpdate.php'); ?>
+                            <li id="updateEpisode">
+                                <div class="collapsible-header"><i class="material-icons">wrap_text</i>Modifier un épisode</div>
+                                <div class="collapsible-body">
+                                    <?php require('view/episodeUpdate.php'); ?>
+                                    <?php if(isset($episodeUpdate)) {
+                                        echo $episodeUpdate;
+                                    }
+                                    ?>
+                                </div>
+                            </li>
 
-                    <!-- on affiche ici ce que l'admin a besoin de voir -->
+                            <!-- gérer les commentaires signalés -->
+                            <li id="signaledCom" class="<?php if(isset($_GET['etatCom'])) {
+                                echo $_GET['etatCom'];
+                                } ?>
+                                ">
+                                <div class="collapsible-header"><i class="material-icons">message</i>Gérer les commentaires signalés</div>
+                                <div class="collapsible-body">
+                                <?php require('view/episodeUpdate.php') ?>
+                                <?php if (isset($contentSignaledCom)) {
+                                    echo $contentSignaledCom;
+                                }
+                                ?>
+                                </div>
+                            </li>
 
-                    <!-- lien vers la création des nouveaux billets ou d'édition -->
+                            <!-- suppression d'un épisode -->
+                            <li id="deleteEpisode">
+                                <div class="collapsible-header"><i class="material-icons">delete_sweep</i>Supprimer un épisode</div>
+                                <div class="collapsible-body">
+                                <?php require('view/episodeUpdate.php'); ?>
+                                    <?php if(isset($episodeDelete)) {
+                                        echo $episodeDelete;
+                                    }
+                                    ?>
+                                </div>
+                            </li>
+                        </ul>
 
                     </div>
                 <?php
