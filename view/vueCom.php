@@ -1,10 +1,10 @@
-<?php $titreTemplate = $post['TITRE'] ?>
+<?php $titreTemplate = strip_tags($post['TITRE']) ?>
 
 <?php $title = $titreTemplate; ?>
 
 
 <?php ob_start(); ?>
-        <p><a href="index.php">Retour à Home</a></p>
+        <p><a href="index.php">Retour à la page d'accueil</a></p>
 
         <div class="news">
             <!--

@@ -78,18 +78,22 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'episodeUpdate') {
-        updateEpisode();
+        updateEpisode($_GET['idBill'], $_POST['titreEpisodeUpdate'], $_POST['contenuEpisodeUpdate']);
+        displayLogin();
+
+
     }
 
     elseif ($_GET['action'] == 'episodeDelete') {
         deleteEpisode($_GET['idBill']);
-        header("Location: ".$_SERVER['HTTP_REFERER']."");
+        // header("Location: ".$_SERVER['HTTP_REFERER']."");
+        displayLogin();
     }
 
 
     elseif ($_GET['action'] == 'comDelete') {
         deleteSignaledCom($_GET['idCom']);
-        header("Location: ".$_SERVER['HTTP_REFERER']."");
+        displayLogin();
     }
 
     elseif ($_GET['action'] == 'comValidate') {

@@ -108,3 +108,21 @@
         ]
     });
 
+// MODIFICATION EPISODES
+// INITIALISATION TINYMCE pour titre episode
+tinymce.init({
+    selector: '.mytexttitleUpdate',
+    language: 'fr_FR',
+    browser_spellcheck: true,
+    contextmenu: false,
+
+});
+
+tinymce.init({
+    selector: '.mytextareaUpdate',
+    language: 'fr_FR',
+    browser_spellcheck: true,
+    contextmenu: false,
+
+});
+

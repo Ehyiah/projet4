@@ -29,9 +29,10 @@ require_once('model/modelUpdateEpisode.php');
 
 
 // fonction pour modifier un épisode
-    function updateEpisode() {
-        $update = updateEpisodeDb();
-//        include('view/login.php');
+    function updateEpisode($id, $titre, $contenu) {
+        // echo $id . $titre . $contenu;
+        $update = updateEpisodeDb($id, $titre, $contenu);
+        // include('view/test.php');
         // tenter d'ajouter le include dans une variable transmise au clic de modification d'un épisode
 
     };

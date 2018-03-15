@@ -90,7 +90,7 @@
                             </li>
 
                             <!-- modification épisode -->
-                            <li id="updateEpisode">
+                            <li id="updateEpisode" class="<?php if(isset($_GET['etatUpdate'])) {echo $_GET['etatUpdate'];} ?>">
                                 <div class="collapsible-header"><i class="material-icons">wrap_text</i>Modifier un épisode</div>
                                 <div class="collapsible-body">
                                     <?php require('view/episodeUpdate.php'); ?>
@@ -102,10 +102,7 @@
                             </li>
 
                             <!-- gérer les commentaires signalés -->
-                            <li id="signaledCom" class="<?php if(isset($_GET['etatCom'])) {
-                                echo $_GET['etatCom'];
-                                } ?>
-                                ">
+                            <li id="signaledCom" class="<?php if(isset($_GET['etatCom'])) {echo $_GET['etatCom'];} ?>">
                                 <div class="collapsible-header"><i class="material-icons">message</i>Gérer les commentaires signalés</div>
                                 <div class="collapsible-body">
                                 <?php require('view/episodeUpdate.php') ?>
@@ -117,7 +114,7 @@
                             </li>
 
                             <!-- suppression d'un épisode -->
-                            <li id="deleteEpisode">
+                            <li id="deleteEpisode" class="<?php if(isset($_GET['etatDel'])) {echo $_GET['etatDel'];} ?>">
                                 <div class="collapsible-header"><i class="material-icons">delete_sweep</i>Supprimer un épisode</div>
                                 <div class="collapsible-body">
                                 <?php require('view/episodeUpdate.php'); ?>
