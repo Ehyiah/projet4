@@ -55,3 +55,30 @@ function postComment($postId, $author, $comment, $idUser)
 
         return $update;
     };
+
+
+
+
+// PASSAGE DU MODEL EN POO
+class ComManager
+{
+    // fonction pour récupérer les 5 derniers billets
+
+
+    // fonction pour récupérer le premier billet
+
+
+    // fonction pour récupérer les commentaires d'un billet
+    public function getComments($postId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = :id');
+        $req->execute(array(
+            'id' => $postId
+        ));
+
+        return $req;
+    }
+
+
+}

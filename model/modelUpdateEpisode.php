@@ -83,3 +83,11 @@
 
     };
 
+
+
+// PASSAGE EN POO DU MODEL
+
+class EpisodeManager
+{
+
+}
