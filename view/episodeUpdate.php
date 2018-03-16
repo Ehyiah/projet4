@@ -69,7 +69,7 @@ contenant l'épisode à l'aide de variables -->
             <p><strong>Contenu du commentaire : </strong> <?= $reponsecom['CONTENU'] ?></p>
             <strong><?= $reponsecom['TITRE_BILLET'] ?></strong>
             <a href="index.php?action=comDelete&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom">Supprimer le commentaire </a>
-            <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom"> Valider le commentaire</a>
+            <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom" onclick="return confirm('Etes-vous sûr ?');"> Valider le commentaire</a>
             <div class="divider"></div>
         <?php
             }
