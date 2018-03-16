@@ -31,14 +31,14 @@
 						<div class="divider"></div>
 
 					
-						<em><a href="index.php?action=bill&amp;id=<?php echo $donnees['ID']; ?>">Commentaires Test</a></em>
+						<em><a href="index.php?action=bill&amp;id=<?php echo $donnees['ID']; ?>">Voir les commentaires</a></em>
 						
 						
 						<?php
 						}
 						$firstBill->closeCursor(); // Termine le traitement de la requête
 						?>
-					<h2>Commentaires</h2>
+					<!-- <h2>Commentaires</h2> -->
 
 				
 				</div>

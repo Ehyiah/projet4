@@ -16,11 +16,9 @@ function displayBill() {
 };
 
 
-function addComment($postId, $author, $comment)
+function addComment($postId, $author, $comment, $idUser)
 {
-    // var_dump($postId);        var_dump($author);        var_dump($comment);
-    // var_dump($affectedLines);
-    $affectedLines = postComment($postId, $author, $comment);
+    $affectedLines = postComment($postId, $author, $comment, $idUser);
 
     if ($affectedLines === false) {
         die('Impossible d\'ajouter le commentaire !');
@@ -29,3 +27,9 @@ function addComment($postId, $author, $comment)
         displayBill();
     }
 };
+
+
+// fonction pour signaler un commentaire
+    function signalCom($id) {
+        $update = signalComDb($id);
+    };

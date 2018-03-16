@@ -6,12 +6,16 @@ function displayLogin() {
     require ('view/login.php');
 };
 
+function displayCom() {
+    $signaledCom = signaledComDb();
+    require('view/episodeUpdate.php');
+};
 
 // fonction pour utilisateur deja enregistré
     function displayLoginError($etat) {
         $billMenu = billMenu();
         require ('view/login.php');
-    }
+    };
 
 
 // fonction pour la connection de l'utilisateur
@@ -38,6 +42,7 @@ function displayLogin() {
                 $_SESSION['ID'] = $resultat['ID'];
                 $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
                 $_SESSION['GROUPE'] = $resultat['GROUPE'];
+                $_SESSION['MAIL'] = $resultat['MAIL'];
                 // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
             }
         }
@@ -59,3 +64,9 @@ function displayLogin() {
         return $etat;
     };
 
+
+
+// fonction pour renvoyer les commentaires d'un USER
+    function getComUser($id) {
+        $comUser = getComUserdB($id);
+    };

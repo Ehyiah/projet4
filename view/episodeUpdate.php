@@ -2,7 +2,7 @@
 
 <!-- partie concernant la modification des épisodes -->
     <?php
-    $billets = getPosts5();
+    $billets = getAllPosts();
     ?>
 
     <?php ob_start() ?>
@@ -15,10 +15,34 @@
             while ($reponsepost = $billets->fetch()) {
 
         ?>
-            <a href="">
-            <?= $reponsepost['TITRE']; ?></a>
-            
+
             <p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
+
+            <ul class="collapsible popout">
+                <li>
+                    <div class="collapsible-header">
+                    <?= $reponsepost['TITRE']; ?>
+
+                    </div>
+                    <div class="collapsible-body">
+                            <form action="index.php?action=episodeUpdate&amp;idBill=<?= $reponsepost['ID']?>&amp;etatUpdate=active#updateEpisode" method="post">
+                                <textarea class="mytexttitleUpdate" name="titreEpisodeUpdate">
+                                    <?= $reponsepost['TITRE']; ?>
+                                </textarea>
+
+                                <textarea class="mytextareaUpdate" name="contenuEpisodeUpdate">
+                                    <?= $reponsepost['CONTENU'] ?>
+                                </textarea>
+
+                                <button class="btn waves-effect waves-light" type="submit" name="publishUpdate">Mettre à jour l'épisode
+                                    <i class="material-icons right">send</i>
+                                </button>
+                        </form>
+                        
+                    </div>
+                </li>
+            </ul>
+
             <div class="divider"></div>
         <?php
             }
@@ -26,13 +50,13 @@
         ?>
     <?php $episodeUpdate = ob_get_clean(); ?>
 
-<!-- au clic sur l'épisode renvoyer vers la page login en ajoutant un include dans la vue
-contenant l'épisode à l'aide de variables -->
+
+
 
 
 <!-- partie concernant la suppression des épisodes -->
     <?php
-    $billets = getPosts5();
+    $billets = getAllPosts();
     ?>
 
     <?php ob_start(); ?>
@@ -43,7 +67,7 @@ contenant l'épisode à l'aide de variables -->
             while ($reponsepost = $billets->fetch()) {
 
         ?>
-            <a href="index.php?idBill=<?php echo $reponsepost['ID']?>&amp;action=episodeDelete#deleteEpisode">
+            <a href="index.php?idBill=<?php echo $reponsepost['ID']?>&amp;action=episodeDelete&amp;etatDel=active#deleteEpisode">
             <?= $reponsepost['TITRE']; ?></a>
             
             <p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
@@ -54,6 +78,11 @@ contenant l'épisode à l'aide de variables -->
         ?>
 
     <?php $episodeDelete = ob_get_clean(); ?>
+
+
+
+
+
 
 
 <!-- partie concernant la modération des commentaires signalés -->

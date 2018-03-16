@@ -6,7 +6,7 @@
 		$bdd = new DbManager();
 
 		$db = $bdd->dbConnect();
-		$req = $db->query('SELECT ID, TITRE FROM billet');
+		$req = $db->query('SELECT ID, TITRE FROM billet ORDER BY ID');
 		
 		return $req;
 	};
@@ -47,3 +47,13 @@
 		return $req;
 	};
 
+// fonction pour récupérer tous les billets
+	function getAllPosts()
+	{
+		$bdd = new DbManager();
+
+		$db = $bdd->dbConnect();
+		$req = $db->query('SELECT * FROM billet ORDER BY ID DESC');
+
+		return $req;
+	};

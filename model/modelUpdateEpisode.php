@@ -1,6 +1,6 @@
 <?php
 
-// function pour supprimer un article de la BDD
+// function pour supprimer un article de la BDD et ses commentaires liés
     function deleteEpisodeDb($idBillet) {
         $bdd = new dbManager();
         $db = $bdd->dbConnect();
@@ -10,8 +10,15 @@
             'id' => $idBillet,
         ));
 
-        return $delete;
+        $reqCom = $db->prepare('DELETE FROM commentaires WHERE ID_BILLET = :id');
+        $deletCom = $reqCom->execute(array(
+            'id' => $idBillet
+        ));
+
+        // return $delete;
     };
+
+
 
 // fonction pour récupérer les commentaires signalés
     function signaledComDb() {
@@ -59,18 +66,20 @@
 
 
 
-// fonction pour modifier un épisode
-// UNE fonction pour afficher les épisodes dans un tinyMCE
-// par les variables titres et contenu transmises 
-// dans le textarea pour pouvoir les modifier
-// ET une fonction pour valider la modification dans la BDD
 
-    // fonction pour afficher les épisodes à modifier dans un tinyMCE
-    function updateEpisodeShowDb() {
-
-    };
     // fonction pour mettre a jour l'épisode
-    function updateEpisodeDb() {
+    function updateEpisodeDb($id, $titre, $contenu) {
+        $bdd = new dbManager();
+        $db = $bdd->dbConnect();
+
+        $req = $db->prepare('UPDATE billet SET TITRE = :titre, CONTENU = :contenu WHERE ID = :id');
+        $update = $req->execute(array(
+            'titre' => $titre,
+            'contenu' => $contenu,
+            'id' => $id
+        ));
+
+        return $update;
 
     };
 

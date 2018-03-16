@@ -1,10 +1,10 @@
-<?php $titreTemplate = $post['TITRE'] ?>
+<?php $titreTemplate = strip_tags($post['TITRE']) ?>
 
 <?php $title = $titreTemplate; ?>
 
 
 <?php ob_start(); ?>
-        <p><a href="index.php">Retour à Home</a></p>
+        <p><a href="index.php">Retour à la page d'accueil</a></p>
 
         <div class="news">
             <!--
@@ -32,6 +32,7 @@
         ?>
             <p><strong><?= htmlspecialchars($comment['AUTEUR']) ?></strong> le <?= $comment['DATE'] ?></p>
             <p><?= nl2br(htmlspecialchars($comment['CONTENU'])) ?></p>
+            <a href="index.php?action=signalCom&amp;idCom=<?= $comment['ID']?>">signaler le commentaire</a>
         <?php
         }
         ?>
@@ -42,7 +43,7 @@
                 <h4>Ajouter un commentaire</h4>
                     <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>" method="post">
                         <div class="input-field col s12">
-                            <input type="text" id="author" name="author" />
+                            <input type="text" id="author" name="author" value="<?= $_SESSION['PSEUDO']?>"/>
                             <label for="author">Auteur</label><br />
                         </div>
                         <div>
