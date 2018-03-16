@@ -2,7 +2,7 @@
 
 <!-- partie concernant la modification des épisodes -->
     <?php
-    $billets = getPosts5();
+    $billets = getAllPosts();
     ?>
 
     <?php ob_start() ?>
@@ -50,19 +50,13 @@
         ?>
     <?php $episodeUpdate = ob_get_clean(); ?>
 
-<!-- au clic sur l'épisode renvoyer vers la page login en ajoutant un include dans la vue
-contenant l'épisode à l'aide de variables -->
-
-
-
-
 
 
 
 
 <!-- partie concernant la suppression des épisodes -->
     <?php
-    $billets = getPosts5();
+    $billets = getAllPosts();
     ?>
 
     <?php ob_start(); ?>

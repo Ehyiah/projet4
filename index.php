@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'addComment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                addComment($_GET['id'], $_POST['author'], $_POST['comment'], $_SESSION['ID']);
             }
             else {
                 echo 'Erreur : tous les champs ne sont pas remplis !';
@@ -101,6 +101,11 @@ if (isset($_GET['action'])) {
         displayLogin();        
     }
 
+    elseif ($_GET['action'] == 'signalCom') {
+        signalCom($_GET['idCom']);
+        header("Location: ".$_SERVER['HTTP_REFERER']."");
+
+    }
 
 }
 else {

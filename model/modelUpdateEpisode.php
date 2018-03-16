@@ -1,6 +1,6 @@
 <?php
 
-// function pour supprimer un article de la BDD
+// function pour supprimer un article de la BDD et ses commentaires liés
     function deleteEpisodeDb($idBillet) {
         $bdd = new dbManager();
         $db = $bdd->dbConnect();
@@ -10,8 +10,15 @@
             'id' => $idBillet,
         ));
 
-        return $delete;
+        $reqCom = $db->prepare('DELETE FROM commentaires WHERE ID_BILLET = :id');
+        $deletCom = $reqCom->execute(array(
+            'id' => $idBillet
+        ));
+
+        // return $delete;
     };
+
+
 
 // fonction pour récupérer les commentaires signalés
     function signaledComDb() {

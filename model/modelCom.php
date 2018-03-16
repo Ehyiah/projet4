@@ -15,8 +15,8 @@ function getPost0($postId)
 function getComments0($postId)
     {
         $bdd = new DbManager();
-
         $db = $bdd->dbConnect();
+
         $comments = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = ?');
         $comments->execute(array($postId));
 
@@ -25,20 +25,33 @@ function getComments0($postId)
 
 
 
-function postComment($postId, $author, $comment)
+function postComment($postId, $author, $comment, $idUser)
     {
-        // var_dump($postId);        var_dump($author);        var_dump($comment);
         $bdd = new DbManager();
-
-
         $db = $bdd->dbConnect();
-        $comments = $db->prepare('INSERT INTO commentaires(ID_BILLET, AUTEUR, CONTENU) VALUES(:ID_BILLET, :AUTEUR, :CONTENU)');
+
+        $comments = $db->prepare('INSERT INTO commentaires(ID_USER, ID_BILLET, AUTEUR, CONTENU) VALUES(:ID_USER, :ID_BILLET, :AUTEUR, :CONTENU)');
         $affectedLines = $comments->execute(array(
             'ID_BILLET' => $postId,
             'AUTEUR' => $author,
-            'CONTENU' => $comment
+            'CONTENU' => $comment,
+            'ID_USER' => $idUser
             ));
 
         return $affectedLines;
     };
 
+
+
+// fonction pour signaler un commentaire dans la BDD
+    function signalComDb($id) {
+        $bdd = new dbManager();
+        $db= $bdd->dbConnect();
+
+        $req = $db->prepare('UPDATE commentaires SET SIGNALE = 1 WHERE ID = :id');
+        $update = $req->execute(array(
+            'id' => $id
+        ));
+
+        return $update;
+    };

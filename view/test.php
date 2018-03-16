@@ -1,3 +1,5 @@
 <?php
 
-echo $_GET['auteurBill'] . ' test include';
+echo ' test include';
+
+

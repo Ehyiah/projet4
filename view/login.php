@@ -140,9 +140,10 @@
                         <div class="divider"></div>
 
                         <!-- on affiche ici ce que l'utilisateur standard va avoir besoin dans son espace perso -->
-
+                        <p>Votre Pseudo : <?= $_SESSION['PSEUDO'] ?></p>
+                        <p>Votre e-mail : <?= $_SESSION['MAIL'] ?></p>
                         <!-- liste des commentaires deja postés par le membre -->
-
+                        <p>Vos commentaires</p>
 
                     </div>
 

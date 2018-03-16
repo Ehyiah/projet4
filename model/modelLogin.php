@@ -7,7 +7,7 @@ function login($pseudo)
         $bdd = new dbManager();
         $db = $bdd->dbConnect();
 
-        $req = $db->prepare('SELECT ID, PASS, PSEUDO, GROUPE FROM users WHERE PSEUDO = :pseudo');
+        $req = $db->prepare('SELECT ID, PASS, PSEUDO, MAIL, GROUPE FROM users WHERE PSEUDO = :pseudo');
         $req->execute(array(
             'pseudo' => $pseudo
         ));
@@ -44,3 +44,16 @@ function login($pseudo)
         ));
     };
 
+// fonction pour récupérer les commentaires d'un membre
+function getComUserdB($id) {
+    $bdd = new dbManager();
+    $db = $bdd->dbConnect();
+
+    $req = $db->prepare('SELECT * FROM commentaires WHERE ID_USER = :id');
+    $comUser = $req->execute(array(
+        'id' => $id
+    ));
+
+    // var_dump($com);
+    return $comUser;
+};

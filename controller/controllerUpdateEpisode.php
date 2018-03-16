@@ -23,17 +23,17 @@ require_once('model/modelUpdateEpisode.php');
         };
 
 
-// au clic sur l'épisode présent dans la liste, ouverture d'une division
-// permettant de récupérer le titre et le contenu et de 
-// l'envoyer dans un tinyMCE
-
-
 // fonction pour modifier un épisode
     function updateEpisode($id, $titre, $contenu) {
-        // echo $id . $titre . $contenu;
         $update = updateEpisodeDb($id, $titre, $contenu);
-        // include('view/test.php');
-        // tenter d'ajouter le include dans une variable transmise au clic de modification d'un épisode
-
     };
 
+
+
+
+// fonctions de tests
+    function displayComSignaled()
+        {
+            $signaledCom = signaledComDb();
+            require('view/test.php');
+        }
