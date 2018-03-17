@@ -1,10 +1,11 @@
 <?php
 
-// fonction de login
-
-function login($pseudo)
+class LoginManager
+{
+    // fonction pour login
+    public function login($pseudo)
     {
-        $bdd = new dbManager();
+        $bdd = new DbManager();
         $db = $bdd->dbConnect();
 
         $req = $db->prepare('SELECT ID, PASS, PSEUDO, MAIL, GROUPE FROM users WHERE PSEUDO = :pseudo');
@@ -13,14 +14,13 @@ function login($pseudo)
         ));
 
         return $resultat = $req->fetch();
+    }
 
-    };
-    
 
-// fonctions création membres
-
-    function checkIfUserExist($nom) {
-        $bdd = new dbManager();
+    // fonction pour vérifier si un USER existe
+    public function checkIfUserExist($nom) 
+    {
+        $bdd = new DbManager();
         $db = $bdd->dbConnect();
 
         $req = $db->prepare('SELECT EXISTS(SELECT * FROM users WHERE PSEUDO = :pseudo)');
@@ -30,10 +30,12 @@ function login($pseudo)
 
         $userExist = $req->fetchColumn();
         return $userExist;
-    };
+    }
 
-    function createNewUser($nom, $mot_de_passe, $email) {
-        $bdd = new dbManager();
+
+    // fonction pour créer un nouvel utilisateur
+    public function createNewUser($nom, $mot_de_passe, $email) {
+        $bdd = new DbManager();
         $db = $bdd->dbConnect();
 
         $req = $db->prepare('INSERT INTO users(PSEUDO, PASS, MAIL) VALUES(:pseudo, :pass, :email)');
@@ -42,18 +44,21 @@ function login($pseudo)
             'pass' => $mot_de_passe,
             'email' => $email
         ));
-    };
+    }
 
-// fonction pour récupérer les commentaires d'un membre
-function getComUserdB($id) {
-    $bdd = new dbManager();
-    $db = $bdd->dbConnect();
 
-    $req = $db->prepare('SELECT * FROM commentaires WHERE ID_USER = :id');
-    $comUser = $req->execute(array(
-        'id' => $id
-    ));
+    // fonction pour récupérer les commentaires d'un membre
+    public function getComUserdB($id) {
+        $bdd = new DbManager();
+        $db = $bdd->dbConnect();
+    
+        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_USER = :id');
+        $comUser = $req->execute(array(
+            'id' => $id
+        ));
+    
+        // var_dump($com);
+        return $comUser;
+    }
 
-    // var_dump($com);
-    return $comUser;
-};
+}

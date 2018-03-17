@@ -1,20 +1,25 @@
 <?php
-require_once('model/modele.php');
+require_once('model/modelPost.php');
 require_once('model/dbManager.php');
 
 
 
 function viewHome()
     {
-        $billets = getPosts5();
-        $comm = getComs5();
-        $firstBill = getPost();
-        $billMenu = billMenu();
+        $postManager = new PostManager();
+        $comManager = new ComManager();
+
+        $billets = $postManager->getPost5();
+        $comm = $comManager->getComs5();
+        $firstBill = $postManager->getFirstPost();
+        $billMenu = $postManager->billMenu();
 
         require('view/home.php');
     };
 
 
+
+/*
 function post()
     {
         $lastBill = getPost($_GET['id']);
@@ -22,6 +27,6 @@ function post()
 
         require('view/template.php');
     };
-
+*/
 
     

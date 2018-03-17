@@ -1,31 +1,42 @@
 <?php
 
-require_once('model/modelUpdateEpisode.php');
+require_once('model/modelPost.php');
+
 
 // fonction pour delete un episode en appelant la fonction dans le model
     function deleteEpisode($idBillet) {
-        $delete = deleteEpisodeDb($idBillet);
+        $postManager = new PostManager();
+
+        $delete = $postManager->deleteEpisodeDb($idBillet);
     };
 
 
 // fonction pour afficher les commentaires signalés
     function signaledCom() {
-        $signaledCom = signaledComDb();
+        $comManager = new ComManager();
+
+        $signaledCom = $comManager->signaledComDb();
     };
 
     // fonction pour supprimer un commentaire signalé
         function deleteSignaledCom($idCom) {
-            $idCom = deleteSignaledComDb($idCom);
+            $comManager = new ComManager();
+
+            $idCom = $comManager->deleteSignaledComDb($idCom);
         };
     // fonction pour accepter un commentaire signalé
         function acceptSignaledCom($idCom) {
-            $accept = acceptSignaledComDb($idCom);
+            $comManager = new ComManager();
+
+            $accept = $comManager->acceptSignaledComDb($idCom);
         };
 
 
 // fonction pour modifier un épisode
     function updateEpisode($id, $titre, $contenu) {
-        $update = updateEpisodeDb($id, $titre, $contenu);
+        $postManager = new PostManager();
+
+        $update = $postManager->updateEpisodeDb($id, $titre, $contenu);
     };
 
 
@@ -34,6 +45,8 @@ require_once('model/modelUpdateEpisode.php');
 // fonctions de tests
     function displayComSignaled()
         {
-            $signaledCom = signaledComDb();
+            $comManager = new ComManager();
+
+            $signaledCom = $comManager->signaledComDb();
             require('view/test.php');
         }

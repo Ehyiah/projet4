@@ -2,18 +2,24 @@
 require_once('model/modelLogin.php');
 
 function displayLogin() {
-    $billMenu = billMenu();
+    $postManager = new PostManager();
+
+    $billMenu = $postManager->billMenu();
     require ('view/login.php');
 };
 
 function displayCom() {
-    $signaledCom = signaledComDb();
+    $comManager = new ComManager();
+
+    $signaledCom = $comManager->signaledComDb();
     require('view/episodeUpdate.php');
 };
 
 // fonction pour utilisateur deja enregistré
     function displayLoginError($etat) {
-        $billMenu = billMenu();
+        $postManager = new PostManager();
+
+        $billMenu = $postManager->billMenu();
         require ('view/login.php');
     };
 
@@ -54,11 +60,13 @@ function displayCom() {
 // fonction de vérification et de création de nouveaux membres
 
     function registerUser($nom,$mot_de_passe,$email) {
-        $userExist = checkIfUserExist($nom);
+        $loginManager = new LoginManager();
+
+        $userExist = $loginManager->checkIfUserExist($nom);
             if ($userExist > 0) {
                 $etat = 1;
             } else {
-                createNewUser($nom, $mot_de_passe, $email);
+                $loginManager->createNewUser($nom, $mot_de_passe, $email);
                 $etat = 0;
             }
         return $etat;
@@ -68,5 +76,7 @@ function displayCom() {
 
 // fonction pour renvoyer les commentaires d'un USER
     function getComUser($id) {
-        $comUser = getComUserdB($id);
+        $loginManager = new LoginManager();
+
+        $comUser = $loginManager->getComUserdB($id);
     };

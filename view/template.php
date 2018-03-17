@@ -156,8 +156,8 @@
 
 		<!-- FOOTER -->
 			<footer class="page-footer">
-				<div>
-					<p> Test footer </p>
+				<div class="center">
+					<p> 2018, Jean Forteroche </p>
 					<div class="divider"></div>
 				</div>
 			</footer>

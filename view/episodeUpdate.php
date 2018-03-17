@@ -2,7 +2,8 @@
 
 <!-- partie concernant la modification des épisodes -->
     <?php
-    $billets = getAllPosts();
+    $postManager = new PostManager();
+    $billets = $postManager->getPosts();
     ?>
 
     <?php ob_start() ?>
@@ -56,7 +57,7 @@
 
 <!-- partie concernant la suppression des épisodes -->
     <?php
-    $billets = getAllPosts();
+    $billets = $postManager->getPosts();
     ?>
 
     <?php ob_start(); ?>
@@ -87,7 +88,8 @@
 
 <!-- partie concernant la modération des commentaires signalés -->
     <?php 
-    $signaledCom = signaledComDb() 
+    $comManager = new ComManager();
+    $signaledCom = $comManager->signaledComDb() 
     ?>
     
     <?php ob_start(); ?>

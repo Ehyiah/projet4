@@ -41,7 +41,9 @@ if (isset($_GET['action'])) {
     }   
     
     elseif ($_GET['action'] == 'loginSubmit') {
-        $resultat = login($_POST['nom']);
+        $loginManager = new LoginManager();
+
+        $resultat = $loginManager->login($_POST['nom']);
         authUser($resultat);
         displayLogin();
     }

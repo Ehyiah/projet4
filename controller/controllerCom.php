@@ -1,11 +1,15 @@
 <?php
 require_once('model/modelCom.php');
+require_once('model/modelPost.php');
 
 function displayBill() {
     if (isset($_GET['id']) && $_GET['id'] > 0) {
-        $post = getPost0($_GET['id']);
-        $comments = getComments0($_GET['id']);
-        $billMenu = billMenu();
+        $postManager = new PostManager();
+        $comManager = new ComManager();
+
+        $post = $postManager->getPost($_GET['id']);
+        $comments = $comManager->getComments($_GET['id']);
+        $billMenu = $postManager->billMenu();
         
         require('view/vueCom.php');
     }
@@ -18,7 +22,9 @@ function displayBill() {
 
 function addComment($postId, $author, $comment, $idUser)
 {
-    $affectedLines = postComment($postId, $author, $comment, $idUser);
+    $comManager = new ComManager();
+
+    $affectedLines = $comManager->postComment($postId, $author, $comment, $idUser);
 
     if ($affectedLines === false) {
         die('Impossible d\'ajouter le commentaire !');
@@ -31,5 +37,7 @@ function addComment($postId, $author, $comment, $idUser)
 
 // fonction pour signaler un commentaire
     function signalCom($id) {
-        $update = signalComDb($id);
+        $comManager = new ComManager();
+
+        $update = $comManager->signalComDb($id);
     };

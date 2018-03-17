@@ -1,31 +1,35 @@
 <?php
 
-function getPost0($postId)
+class ComManager
+{
+    // fonction pour récupérer les 5 derniers commentaires
+    public function getComs5()
     {
         $bdd = new DbManager();
-        $db = $bdd->dbConnect();
 
-        $req = $db->prepare('SELECT * FROM billet WHERE ID = ?');
-        $req->execute(array($postId));
-        $post = $req->fetch();
+		$db = $bdd->dbConnect();
+		$req = $db->query('SELECT * FROM commentaires ORDER BY ID DESC LIMIT 5');
 
-        return $post;
-    };
+		return $req;
+    }
 
-function getComments0($postId)
+    // fonction pour récupérer les commentaires d'un billet
+    public function getComments($postId)
     {
         $bdd = new DbManager();
+
         $db = $bdd->dbConnect();
+        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = :id');
+        $req->execute(array(
+            'id' => $postId
+        ));
 
-        $comments = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = ?');
-        $comments->execute(array($postId));
-
-        return $comments;
-    };
+        return $req;
+    }
 
 
-
-function postComment($postId, $author, $comment, $idUser)
+    // fonction pour poster un commentaire
+    public function postComment($postId, $author, $comment, $idUser)
     {
         $bdd = new DbManager();
         $db = $bdd->dbConnect();
@@ -39,12 +43,12 @@ function postComment($postId, $author, $comment, $idUser)
             ));
 
         return $affectedLines;
-    };
+    }
 
 
-
-// fonction pour signaler un commentaire dans la BDD
-    function signalComDb($id) {
+    // fonction pour signaler un commentaire
+    public function signalComDb($id)
+    {
         $bdd = new dbManager();
         $db= $bdd->dbConnect();
 
@@ -54,31 +58,52 @@ function postComment($postId, $author, $comment, $idUser)
         ));
 
         return $update;
-    };
-
-
-
-
-// PASSAGE DU MODEL EN POO
-class ComManager
-{
-    // fonction pour récupérer les 5 derniers billets
-
-
-    // fonction pour récupérer le premier billet
-
-
-    // fonction pour récupérer les commentaires d'un billet
-    public function getComments($postId)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = :id');
-        $req->execute(array(
-            'id' => $postId
-        ));
-
-        return $req;
     }
 
+    // fonction pour récupérer les commentaires signalés
+    public function signaledComDb()
+    {
+        $bdd = new dbManager();
+        $db = $bdd->dbConnect();
+
+        // $signaledCom = $db->query('SELECT * FROM commentaires WHERE SIGNALE = 1');
+        
+        $signaledCom = $db->query('SELECT c.ID ID_COM, c.ID_BILLET, c.AUTEUR AUTEUR_COM, c.CONTENU, c.SIGNALE, b.ID, b.TITRE TITRE_BILLET, b.AUTEUR AUTEUR_BILLET
+        FROM commentaires c
+        INNER JOIN billet b
+        ON c.ID_BILLET = b.ID
+        WHERE c.SIGNALE = 1
+        ');
+
+        return $signaledCom;
+    }
+
+    // fonction pour supprimer un commentaire de la BDD
+    public function deleteSignaledComDb($idCom)
+    {
+        $bdd = new dbManager();
+        $db = $bdd->dbConnect();
+
+        $req = $db->prepare('DELETE FROM commentaires WHERE ID = :id');
+        $delete = $req->execute(array(
+            'id' => $idCom
+        ));
+
+        return $delete;
+    }
+
+    // fonction pour valider un commentaire signalé
+    public function acceptSignaledComDb($idCom)
+    {
+        $bdd = new dbManager();
+        $db = $bdd->dbConnect();
+
+        $req = $db->prepare('UPDATE commentaires SET SIGNALE = 0 WHERE ID = :id');
+        $update = $req->execute(array(
+            'id' => $idCom
+        ));
+
+        return $update;
+    }
 
 }
