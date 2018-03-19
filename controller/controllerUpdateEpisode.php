@@ -40,13 +40,21 @@ require_once('model/modelPost.php');
     };
 
 
+// fonction pour réunir les fonctions affichant dans la pageLOGIN et faire un appel de la vue
+
+
+
+// fonctions de modifications (celles avec des paramètres)
+
+
+
+
 
 
 // fonctions de tests
-    function displayComSignaled()
-        {
-            $comManager = new ComManager();
+    function displayComSignaled() {
+        $comManager = new ComManager();
 
-            $signaledCom = $comManager->signaledComDb();
-            require('view/test.php');
-        }
+        $signaledCom = $comManager->signaledComDb();
+    };
+

@@ -3,8 +3,16 @@ require_once('model/modelLogin.php');
 
 function displayLogin() {
     $postManager = new PostManager();
+    $logManager = new LoginManager();
 
     $billMenu = $postManager->billMenu();
+
+    if (isset($_SESSION['ID'])) {
+
+        $comUser = $logManager->getComUserdB($_SESSION['ID']);
+    }
+
+    require ('view/episodeUpdate.php');
     require ('view/login.php');
 };
 
@@ -25,21 +33,15 @@ function displayCom() {
 
 
 // fonction pour la connection de l'utilisateur
-
     function authUser($resultat) {
-        // var_dump($resultat);
-        // var_dump($_POST['mot_de_passe']);
+        $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
 
-        // $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
-
-        if ($_POST['mot_de_passe'] == $resultat['PASS']) {
+        if ($_POST['mot_de_passe'] == $passCorrect) {
             $passCorrect = true;
         } else {
             $passCorrect = false;
         }
 
-        // var_dump($passCorrect);
-        
         if (!$resultat) {
             echo 'mauvais identifiant ou mot de passe';
         }   
@@ -49,7 +51,7 @@ function displayCom() {
                 $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
                 $_SESSION['GROUPE'] = $resultat['GROUPE'];
                 $_SESSION['MAIL'] = $resultat['MAIL'];
-                // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
+                 // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
             }
         }
     };

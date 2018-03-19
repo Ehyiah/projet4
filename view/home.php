@@ -19,26 +19,25 @@
 
 			<!-- corps de l'épisode -->
 				<div class="col s12 m8 l9">
-					<p> affichage contenu BDD titre épisode</p>
-
 				<!-- affichage du premier billet -->							
 					<?php
 						while ($donnees = $firstBill->fetch()) {
 					?>
 						<div class="divider"></div>
-						<p>Titre épisode issu de la BDD : </p> <?php echo $donnees['TITRE'];?>
-						<p>ID du billet : </p> <?php echo $donnees['ID'];?>
+						<p><strong>Titre du premier épisode : </strong><?php echo strip_tags($donnees['TITRE']);?></p>
+
+						<?= $donnees['CONTENU'] ?>
+
 						<div class="divider"></div>
 
 					
-						<em><a href="index.php?action=bill&amp;id=<?php echo $donnees['ID']; ?>">Voir les commentaires</a></em>
+						<em><a href="index.php?action=bill&amp;id=<?php echo $donnees['ID']; ?>">Voir les commentaires sur cet épisode</a></em>
 						
 						
 						<?php
 						}
 						$firstBill->closeCursor(); // Termine le traitement de la requête
 						?>
-					<!-- <h2>Commentaires</h2> -->
 
 				
 				</div>
@@ -47,15 +46,15 @@
 				<div class="col s12 m4 l3" id="menudroit">
 					<div class="row" id="billetdroit">
 						<div class="col s12">
-							<p>Liste des derniers épisodes</p>
+							<p><strong>Liste des derniers épisodes</strong></p>
 							<div class="divider"></div>
 								<?php 
 									while ($reponsepost = $billets->fetch()) {
 
 								?>
-									<p>ID : <?php echo $reponsepost['ID']; ?></p>
+									<!-- <p>ID : <?php echo $reponsepost['ID']; ?></p> -->
 									<p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
-									<p>Titre : <?php echo $reponsepost['TITRE']; ?></p>
+									<p>Titre : <?php echo strip_tags($reponsepost['TITRE']); ?></p>
 									<div class="divider"></div>
 								<?php
 									}
@@ -68,13 +67,13 @@
 
 					<div class="row" id="commentairedroit">
 						<div class="col s12">
-							<p>Les 5 derniers commentaires</p>
+							<p><strong>Les 5 derniers commentaires</strong></p>
 							<div class="divider"></div>
 								<!-- RECUPERATION DES 5 DERNIERS COMMENTAIRES -->
 								<?php
 									while ($reponsecomm = $comm->fetch()) {
 								?>
-									<p>ID : <?php echo $reponsecomm['ID']; ?> </p>
+									<!-- <p>ID : <?php echo $reponsecomm['ID']; ?> </p> -->
 									<p>Auteur : <?php echo $reponsecomm['AUTEUR']; ?> </p>
 									<p>Commentaire : <?php echo $reponsecomm['CONTENU']; ?> </p>
 

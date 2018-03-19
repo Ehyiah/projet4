@@ -4,34 +4,29 @@
 
 
 <?php ob_start(); ?>
+    <div>
         <p><a href="index.php">Retour à la page d'accueil</a></p>
+        <div class="divider"></div>
 
         <div class="news">
-            <!--
-                <h3>
-                    <?= htmlspecialchars($post['TITRE']) ?>
-                    <em>,ID : <?= $post['ID'] ?></em>
-                </h3>
-                
-                <p>
-                    <?= nl2br(htmlspecialchars($post['CONTENU'])) ?>
-                </p>
-            -->
-            
-            <?= $post['TITRE'] ?>
-
-            <?= $post['CONTENU'] ?>
-
+            <div class="center-align">
+                <?= $post['TITRE'] ?>
+            </div>
+            <div>
+                <?= $post['CONTENU'] ?>
+            </div>
         </div>
-
+    </div>
+    <div class="divider"></div>
+    <div class="divider"></div>
         <h2>Commentaires</h2>
 
         <?php
         while ($comment = $comments->fetch())
         {
         ?>
-            <p><strong><?= htmlspecialchars($comment['AUTEUR']) ?></strong> le <?= $comment['DATE'] ?></p>
-            <p><?= nl2br(htmlspecialchars($comment['CONTENU'])) ?></p>
+            <p><strong><?= $comment['AUTEUR'] ?></strong> le <?= $comment['DATE'] ?></p>
+            <p><?= $comment['CONTENU'] ?></p>
             <a href="index.php?action=signalCom&amp;idCom=<?= $comment['ID']?>">signaler le commentaire</a>
         <?php
         }

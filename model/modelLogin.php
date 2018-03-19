@@ -38,10 +38,12 @@ class LoginManager
         $bdd = new DbManager();
         $db = $bdd->dbConnect();
 
+        $pass_hache = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+
         $req = $db->prepare('INSERT INTO users(PSEUDO, PASS, MAIL) VALUES(:pseudo, :pass, :email)');
         $req->execute(array(
             'pseudo' => $nom,
-            'pass' => $mot_de_passe,
+            'pass' => $pass_hache,
             'email' => $email
         ));
     }
@@ -52,13 +54,18 @@ class LoginManager
         $bdd = new DbManager();
         $db = $bdd->dbConnect();
     
-        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_USER = :id');
-        $comUser = $req->execute(array(
-            'id' => $id
+        $req = $db->prepare('SELECT c.ID ID_COM, c.ID_BILLET ID_BILLET, c.CONTENU CONTENU_COM, b.TITRE TITRE_BILLET
+        FROM commentaires c
+        INNER JOIN billet b
+        on c.ID_BILLET = b.ID
+        WHERE ID_USER = :ID_USER
+        ');
+        
+        $req->execute(array(
+            'ID_USER' => $id
         ));
     
-        // var_dump($com);
-        return $comUser;
+        return $req;
     }
 
 }

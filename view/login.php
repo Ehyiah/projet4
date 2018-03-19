@@ -71,7 +71,7 @@
                 { $title = 'Espace Administration';
                 ?>
                     <div class="container">
-                        <p> Bonjour et bienvenue dans votre espace personnel</p>
+                        <p class="center"> Bonjour et bienvenue dans votre espace personnel d'administration</p>
                         <div class="divider"></div>
 
                     <!-- on affiche ici ce que l'admin a besoin de voir -->
@@ -93,7 +93,6 @@
                             <li id="updateEpisode" class="<?php if(isset($_GET['etatUpdate'])) {echo $_GET['etatUpdate'];} ?>">
                                 <div class="collapsible-header"><i class="material-icons">wrap_text</i>Modifier un épisode</div>
                                 <div class="collapsible-body">
-                                    <?php require('view/episodeUpdate.php'); ?>
                                     <?php if(isset($episodeUpdate)) {
                                         echo $episodeUpdate;
                                     }
@@ -105,7 +104,6 @@
                             <li id="signaledCom" class="<?php if(isset($_GET['etatCom'])) {echo $_GET['etatCom'];} ?>">
                                 <div class="collapsible-header"><i class="material-icons">message</i>Gérer les commentaires signalés</div>
                                 <div class="collapsible-body">
-                                <?php require('view/episodeUpdate.php') ?>
                                 <?php if (isset($contentSignaledCom)) {
                                     echo $contentSignaledCom;
                                 }
@@ -117,7 +115,6 @@
                             <li id="deleteEpisode" class="<?php if(isset($_GET['etatDel'])) {echo $_GET['etatDel'];} ?>">
                                 <div class="collapsible-header"><i class="material-icons">delete_sweep</i>Supprimer un épisode</div>
                                 <div class="collapsible-body">
-                                <?php require('view/episodeUpdate.php'); ?>
                                     <?php if(isset($episodeDelete)) {
                                         echo $episodeDelete;
                                     }
@@ -142,8 +139,21 @@
                         <!-- on affiche ici ce que l'utilisateur standard va avoir besoin dans son espace perso -->
                         <p>Votre Pseudo : <?= $_SESSION['PSEUDO'] ?></p>
                         <p>Votre e-mail : <?= $_SESSION['MAIL'] ?></p>
+
                         <!-- liste des commentaires deja postés par le membre -->
-                        <p>Vos commentaires</p>
+                        <p>Vos commentaires postés : </p>
+                        <div class="divider"></div>
+
+                        <?php
+                            while ($com = $comUser->fetch()) {
+                        ?>
+                            <p><strong>A propos de l'épisode : </strong><?= strip_tags($com['TITRE_BILLET']) ?></p>
+                            <p><strong>Commentaire : </strong><?= $com['CONTENU_COM'] ?></p>
+                            <div class="divider"></div>
+                        <?php
+                            }
+                            $comUser->closeCursor();
+                        ?>
 
                     </div>
 
@@ -151,8 +161,6 @@
                 <?php
                 };
             ?>
-
-
 <?php $content = ob_get_clean(); ?>
 
 
