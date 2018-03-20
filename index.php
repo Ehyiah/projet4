@@ -9,20 +9,8 @@ require_once('controller/controllerUpdateEpisode.php');
 
 
 if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'listPosts') {
-        listPosts();
-    }
-
-    elseif ($_GET['action'] == 'post') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            post();
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
-
-    elseif ($_GET['action'] == 'addComment') {
+    // post d'un commentaire
+    if ($_GET['action'] == 'addComment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                 addComment($_GET['id'], $_POST['author'], $_POST['comment'], $_SESSION['ID']);
@@ -36,14 +24,14 @@ if (isset($_GET['action'])) {
         }
     }
 
+    // affichage page des membres
     elseif ($_GET['action'] == 'login') {
         displayLogin();
     }   
-    
+    // connection du membre
     elseif ($_GET['action'] == 'loginSubmit') {
-        $loginManager = new LoginManager();
+        $resultat = testLogIn($_POST['nom']);
 
-        $resultat = $loginManager->login($_POST['nom']);
         authUser($resultat);
         displayLogin();
     }
@@ -60,49 +48,49 @@ if (isset($_GET['action'])) {
                 displayLogin();
             }
     }  
-
+    // deconnection du membre
     elseif ($_GET['action'] == 'logout') {
             $_SESSION = array();    
             session_destroy();
             displayLogin();
     }   
 
-
+    // affichage billet
     elseif ($_GET['action'] == 'bill') {
         displayBill();
     }
 
-
+    // publication nouvel épisode
     elseif ($_GET['action'] == 'newEpisode') {
         newEpisode($_POST['titreEpisode'], $_POST['contenuEpisode']);
         displayLogin();
 
     }
-
+    // modification épisode
     elseif ($_GET['action'] == 'episodeUpdate') {
         updateEpisode($_GET['idBill'], $_POST['titreEpisodeUpdate'], $_POST['contenuEpisodeUpdate']);
         displayLogin();
 
 
     }
-
+    // suppression épisode
     elseif ($_GET['action'] == 'episodeDelete') {
         deleteEpisode($_GET['idBill']);
         // header("Location: ".$_SERVER['HTTP_REFERER']."");
         displayLogin();
     }
 
-
+    // suppression d'un commentaire signalé
     elseif ($_GET['action'] == 'comDelete') {
         deleteSignaledCom($_GET['idCom']);
         displayLogin();
     }
-
+    // validation d'un commentaire signalé
     elseif ($_GET['action'] == 'comValidate') {
         acceptSignaledCom($_GET['idCom']);
         displayLogin();        
     }
-
+    // signalement d'un commentaire
     elseif ($_GET['action'] == 'signalCom') {
         signalCom($_GET['idCom']);
         header("Location: ".$_SERVER['HTTP_REFERER']."");

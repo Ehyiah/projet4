@@ -26,7 +26,7 @@
         {
         ?>
             <p><strong><?= $comment['AUTEUR'] ?></strong> le <?= $comment['DATE'] ?></p>
-            <p><?= $comment['CONTENU'] ?></p>
+            <p><?= htmlspecialchars($comment['CONTENU']) ?></p>
             <a href="index.php?action=signalCom&amp;idCom=<?= $comment['ID']?>">signaler le commentaire</a>
         <?php
         }
@@ -38,13 +38,15 @@
                 <h4>Ajouter un commentaire</h4>
                     <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>" method="post">
                         <div class="input-field col s12">
-                            <input type="text" id="author" name="author" value="<?= $_SESSION['PSEUDO']?>"/>
-                            <label for="author">Auteur</label><br />
+                            <input type="hidden" id="author" name="author" value="<?= $_SESSION['PSEUDO']?>"/>
+                            <!-- <label for="author">Auteur</label><br /> -->
                         </div>
+                        
                         <div>
                             <label for="comment">Commentaire</label><br />
                             <textarea id="comment" name="comment"></textarea>
                         </div>
+
                         <div>
                         <button class="btn waves-effect waves-light" type="submit" name="action">Envoyer
                             <i class="material-icons right">send</i>

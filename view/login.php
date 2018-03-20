@@ -148,7 +148,7 @@
                             while ($com = $comUser->fetch()) {
                         ?>
                             <p><strong>A propos de l'épisode : </strong><?= strip_tags($com['TITRE_BILLET']) ?></p>
-                            <p><strong>Commentaire : </strong><?= $com['CONTENU_COM'] ?></p>
+                            <p><strong>Commentaire : </strong><?= htmlspecialchars($com['CONTENU_COM']) ?></p>
                             <div class="divider"></div>
                         <?php
                             }

@@ -97,7 +97,7 @@
             while ($reponsecom = $signaledCom->fetch()) {
         ?>
             <p><strong>Auteur du commentaire : </strong> <?= $reponsecom['AUTEUR_COM']?></p>
-            <p><strong>Contenu du commentaire : </strong> <?= $reponsecom['CONTENU'] ?></p>
+            <p><strong>Contenu du commentaire : </strong> <?= htmlspecialchars($reponsecom['CONTENU']) ?></p>
             <strong><?= $reponsecom['TITRE_BILLET'] ?></strong>
             <a href="index.php?action=comDelete&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom">Supprimer le commentaire </a>
             <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom" onclick="return confirm('Etes-vous sûr ?');"> Valider le commentaire</a>

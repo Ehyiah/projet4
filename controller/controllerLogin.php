@@ -1,6 +1,7 @@
 <?php
 require_once('model/modelLogin.php');
 
+// page de connection et membres
 function displayLogin() {
     $postManager = new PostManager();
     $logManager = new LoginManager();
@@ -16,12 +17,6 @@ function displayLogin() {
     require ('view/login.php');
 };
 
-function displayCom() {
-    $comManager = new ComManager();
-
-    $signaledCom = $comManager->signaledComDb();
-    require('view/episodeUpdate.php');
-};
 
 // fonction pour utilisateur deja enregistré
     function displayLoginError($etat) {
@@ -31,8 +26,17 @@ function displayCom() {
         require ('view/login.php');
     };
 
+// fonction login pour récupérer les infos depuis la BDD
+    function testLogIn($test)
+    {
+        $loginManager = new LoginManager();
 
-// fonction pour la connection de l'utilisateur
+        $resultat = $loginManager->login($test);
+
+        return $resultat;
+    }
+
+// fonction pour la connection de l'utilisateur si mot de passe correspond
     function authUser($resultat) {
         $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
 
@@ -60,7 +64,6 @@ function displayCom() {
 
 
 // fonction de vérification et de création de nouveaux membres
-
     function registerUser($nom,$mot_de_passe,$email) {
         $loginManager = new LoginManager();
 
@@ -76,9 +79,11 @@ function displayCom() {
 
 
 
-// fonction pour renvoyer les commentaires d'un USER
+// fonction pour renvoyer les commentaires d'un USER dans espace membre
     function getComUser($id) {
         $loginManager = new LoginManager();
 
         $comUser = $loginManager->getComUserdB($id);
     };
+
+//

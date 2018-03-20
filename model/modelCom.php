@@ -19,7 +19,7 @@ class ComManager
         $bdd = new DbManager();
 
         $db = $bdd->dbConnect();
-        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = :id');
+        $req = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = :id ORDER BY ID');
         $req->execute(array(
             'id' => $postId
         ));
@@ -66,13 +66,12 @@ class ComManager
         $bdd = new dbManager();
         $db = $bdd->dbConnect();
 
-        // $signaledCom = $db->query('SELECT * FROM commentaires WHERE SIGNALE = 1');
-        
         $signaledCom = $db->query('SELECT c.ID ID_COM, c.ID_BILLET, c.AUTEUR AUTEUR_COM, c.CONTENU, c.SIGNALE, b.ID, b.TITRE TITRE_BILLET, b.AUTEUR AUTEUR_BILLET
         FROM commentaires c
         INNER JOIN billet b
         ON c.ID_BILLET = b.ID
         WHERE c.SIGNALE = 1
+        ORDER BY ID
         ');
 
         return $signaledCom;

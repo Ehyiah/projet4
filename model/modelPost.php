@@ -27,7 +27,6 @@ class PostManager
 
 		return $post;
 
-		//return $req;
 	}
 
 	// fonction pour récupérer le premier billet

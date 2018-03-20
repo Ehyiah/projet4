@@ -66,7 +66,7 @@
 
 
 
-							<!-- test afficchage pseudo par session -->
+							<!-- affichage pseudo par session -->
 							<?php
 								if (isset($_SESSION['PSEUDO'])) {
 									echo 'Bonjour ' . $_SESSION['PSEUDO'];
@@ -129,7 +129,7 @@
 								<img src="public/images/diapo/01.jpg">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Mon dernier roman</h3>
-									<h5 class="black-text text-darken-3">se déroule sur une terre paradisiaque</h5>
+									<h5 class="black-text text-darken-3">se déroule sur une terre lointaine</h5>
 								</div>
 							</li>
 							<li>
@@ -144,7 +144,7 @@
 				
 				
 				<!-- BLOG -->
-					<!-- episode -->
+					<!-- content -->
 						<section>
 							<?php echo $content ?>
 						</section>
@@ -167,7 +167,7 @@
 
 		<!-- SCRIPTS -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	<!-- JQuery -->
-			<script type="text/javascript" src="public/js/materialize.min.js"></script>						<!-- Materialize -->
-			<script src="public/js/main.js"></script> 															<!-- JS d'initialisation -->
+			<script type="text/javascript" src="public/js/materialize.min.js"></script>					<!-- Materialize -->
+			<script src="public/js/main.js"></script> 													<!-- JS d'initialisation -->
     </body>
 </html>

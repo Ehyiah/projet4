@@ -3,45 +3,37 @@ require_once('model/modelPost.php');
 require_once('model/dbManager.php');
 
 
-
+// affichage page accueil et premier billet
 function viewHome()
     {
         $postManager = new PostManager();
         $comManager = new ComManager();
 
+        $billMenu = $postManager->billMenu();
+        $firstBill = $postManager->getFirstPost();
         $billets = $postManager->getPost5();
         $comm = $comManager->getComs5();
-        $firstBill = $postManager->getFirstPost();
-        $billMenu = $postManager->billMenu();
 
         require('view/home.php');
     };
 
 
-
-/*
-function post()
+// affichage d'un billet et ses commentaires
+function displayBill() 
     {
-        $lastBill = getPost($_GET['id']);
-        $comm = getComs5($_GET['id']);
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $postManager = new PostManager();
+            $comManager = new ComManager();
 
-        require('view/template.php');
-    };
-*/
+            $post = $postManager->getPost($_GET['id']);
+            $comments = $comManager->getComments($_GET['id']);
+            $billMenu = $postManager->billMenu();
+            
+            require('view/vueCom.php');
+        }
+        else {
+            echo 'Erreur : aucun identifiant de billet envoyé';
+        };
 
-function displayBill() {
-    if (isset($_GET['id']) && $_GET['id'] > 0) {
-        $postManager = new PostManager();
-        $comManager = new ComManager();
-
-        $post = $postManager->getPost($_GET['id']);
-        $comments = $comManager->getComments($_GET['id']);
-        $billMenu = $postManager->billMenu();
-        
-        require('view/vueCom.php');
-    }
-    else {
-        echo 'Erreur : aucun identifiant de billet envoyé';
     };
 
-};

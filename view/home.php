@@ -75,7 +75,7 @@
 								?>
 									<!-- <p>ID : <?php echo $reponsecomm['ID']; ?> </p> -->
 									<p>Auteur : <?php echo $reponsecomm['AUTEUR']; ?> </p>
-									<p>Commentaire : <?php echo $reponsecomm['CONTENU']; ?> </p>
+									<p>Commentaire : <?php echo htmlspecialchars($reponsecomm['CONTENU']); ?> </p>
 
 									<div class="divider"></div>
 								<?php		
