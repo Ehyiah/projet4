@@ -198,3 +198,11 @@ tinymce.init({
     ]
 });
 
+
+
+// MESSAGE FLASH
+$('#alert_close').click(function(){
+    $("#alert_box").fadeOut( "slow", function() {
+    });
+});
+

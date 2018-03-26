@@ -47,7 +47,9 @@ function displayLogin() {
         }
 
         if (!$resultat) {
-            echo 'mauvais identifiant ou mot de passe';
+            // echo 'mauvais identifiant ou mot de passe';
+            $Session = new SessionFlash();
+            $Session->setFlash('Mauvais identifiant et/ou Mot de passe', 'red');
         }   
         else {
             if ($passCorrect) {
@@ -56,6 +58,8 @@ function displayLogin() {
                 $_SESSION['GROUPE'] = $resultat['GROUPE'];
                 $_SESSION['MAIL'] = $resultat['MAIL'];
                  // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
+                 $Session = new SessionFlash();
+                 $Session->setFlash('Vous êtes maintenant connecté en tant que ' . $_SESSION['PSEUDO'], 'green');
             }
         }
     };
@@ -69,12 +73,14 @@ function displayLogin() {
 
         $userExist = $loginManager->checkIfUserExist($nom);
             if ($userExist > 0) {
-                $etat = 1;
+                $Session = new SessionFlash();
+                $Session->setFlash('Nom d\'utilisateur deja enregistré', 'red');
             } else {
                 $loginManager->createNewUser($nom, $mot_de_passe, $email);
-                $etat = 0;
+
+                $Session = new SessionFlash();
+                $Session->setFlash('Nouvel utilisateur enregistré avec succès', 'green');
             }
-        return $etat;
     };
 
 

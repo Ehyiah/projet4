@@ -19,7 +19,11 @@
     </div>
     <div class="divider"></div>
     <div class="divider"></div>
-        <h2>Commentaires</h2>
+        <h2 id="commentaires">Commentaires</h2>
+        <?php 
+                    $Session = new SessionFlash();
+                    $Session->flash(); 
+                    ?>
 
         <?php
         while ($comment = $comments->fetch())
@@ -27,7 +31,7 @@
         ?>
             <p><strong><?= $comment['AUTEUR'] ?></strong> le <?= $comment['DATE'] ?></p>
             <p><?= htmlspecialchars($comment['CONTENU']) ?></p>
-            <a href="index.php?action=signalCom&amp;idCom=<?= $comment['ID']?>">signaler le commentaire</a>
+            <a href="index.php?action=signalCom&amp;idCom=<?= $comment['ID']?>#commentaires">signaler le commentaire</a>
         <?php
         }
         ?>
@@ -36,7 +40,7 @@
             if (isset($_SESSION['PSEUDO'])) {
                 ?>
                 <h4>Ajouter un commentaire</h4>
-                    <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>" method="post">
+                    <form action="index.php?action=addComment&amp;id=<?= $post['ID'] ?>#commentaires" method="post">
                         <div class="input-field col s12">
                             <input type="hidden" id="author" name="author" value="<?= $_SESSION['PSEUDO']?>"/>
                             <!-- <label for="author">Auteur</label><br /> -->

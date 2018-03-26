@@ -8,6 +8,10 @@ require_once('model/modelPost.php');
         $postManager = new PostManager();
 
         $delete = $postManager->deleteEpisodeDb($idBillet);
+
+        $Session = new SessionFlash();
+        $Session->setFlash('L\'épisode a bien été supprimé', 'red');
+
     };
 
 
@@ -16,6 +20,9 @@ require_once('model/modelPost.php');
         $postManager = new PostManager();
 
         $update = $postManager->updateEpisodeDb($id, $titre, $contenu);
+
+        $Session = new SessionFlash();
+        $Session->setFlash('L\'épisode a bien été modifié', 'green');
     };
 
 

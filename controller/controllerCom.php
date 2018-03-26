@@ -12,6 +12,9 @@ function addComment($postId, $author, $comment, $idUser)
         die('Impossible d\'ajouter le commentaire !');
     }
     else {
+        
+    $Session = new SessionFlash();
+    $Session->setFlash('Le commentaire a bien été ajouté', 'green');
         displayBill();
     }
 };
@@ -22,6 +25,8 @@ function addComment($postId, $author, $comment, $idUser)
         $comManager = new ComManager();
 
         $update = $comManager->signalComDb($id);
+        $Session = new SessionFlash();
+        $Session->setFlash('Le commentaire a bien été signalé', 'green');
     };
 
 
@@ -32,6 +37,7 @@ function signaledCom() {
     $comManager = new ComManager();
 
     $signaledCom = $comManager->signaledComDb();
+
 };
 
 // fonction pour supprimer un commentaire signalé
@@ -39,6 +45,8 @@ function signaledCom() {
         $comManager = new ComManager();
 
         $idCom = $comManager->deleteSignaledComDb($idCom);
+        $Session = new SessionFlash();
+        $Session->setFlash('Le commentaire a bien été supprimé', 'red');
     };
 
 // fonction pour accepter un commentaire signalé
@@ -46,4 +54,6 @@ function signaledCom() {
         $comManager = new ComManager();
 
         $accept = $comManager->acceptSignaledComDb($idCom);
+        $Session = new SessionFlash();
+        $Session->setFlash('Le commentaire a bien été validé', 'green');
     };

@@ -5,6 +5,14 @@
             <?php
                 // Le mot de passe n'a pas été envoyé ou n'est pas bon alors on affiche le formulaire
                 if (!isset($_SESSION['PSEUDO'])) { ?>
+
+
+                    <?php 
+                    $Session = new SessionFlash();
+                    $Session->flash(); 
+                    ?>
+
+
                     <div class="container">
                         <ul class="collapsible popout">
                             <li class="active">
@@ -30,13 +38,7 @@
                             </li>
                             <li>
                                 <div class="collapsible-header">Pas encore inscrit ? </br>
-                                <strong>
-                                <?php
-                                if (isset($etat)) {
-                                    echo $etat;
-                                }
-                                ?>
-                                </strong>
+
                                 </div>
                                     <div class="collapsible-body">
                                         <form action="index.php?action=signUp" method="post">
@@ -73,6 +75,13 @@
                     <div class="container">
                         <p class="center"> Bonjour et bienvenue dans votre espace personnel d'administration</p>
                         <div class="divider"></div>
+
+
+                    <?php 
+                    $Session = new SessionFlash();
+                    $Session->flash(); 
+                    ?>
+
 
                     <!-- on affiche ici ce que l'admin a besoin de voir -->
                         <ul class="collapsible popout">
@@ -133,6 +142,11 @@
                 { $title = 'Espace Membre';
                 ?>
                     <div class="container">
+                    <?php 
+                    $Session = new SessionFlash();
+                    $Session->flash(); 
+                    ?>
+
                         <p class="center-align"> Bienvenue <?= $_SESSION['PSEUDO'] ?>, vous êtes maintenant dans votre espace personnel</p>
                         <div class="divider"></div>
 

@@ -7,6 +7,8 @@ require_once('controller/controllerLogin.php');
 require_once('controller/controllerNewEpisode.php');
 require_once('controller/controllerUpdateEpisode.php');
 
+require_once('controller/controllerFlash.php');
+
 
 if (isset($_GET['action'])) {
     // post d'un commentaire
@@ -39,6 +41,9 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'signUp') {
         // appelle des fonctions qui vérifie si utilisateur deja enregistré puis création de l'utilisateur
         $etat = registerUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
+        displayLogin();
+        
+        /*
             if ($etat > 0) {
                 // utilisateur existe deja
                 $etat = 'utilisateur deja enregistré';
@@ -47,6 +52,7 @@ if (isset($_GET['action'])) {
                 // nouvel utilisateur a été créé on redirige vers la page des membres
                 displayLogin();
             }
+        */
     }  
     // deconnection du membre
     elseif ($_GET['action'] == 'logout') {

@@ -95,3 +95,15 @@
     /* MEDIA MATERIALIZE 
     600px, 992px, 1200px 
     */
+
+
+
+
+    #alert_close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 20px;
+        color: white;
+        cursor:pointer; 
+    }
