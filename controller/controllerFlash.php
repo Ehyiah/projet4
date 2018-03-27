@@ -2,7 +2,7 @@
 
 class SessionFlash {
 
-    public function setFlash($message, $type = 'error') {
+    public function setFlash($message, $type = 'red') {
         $_SESSION['flash'] = array (
             'message' => $message,
             'type' => $type 
@@ -12,7 +12,7 @@ class SessionFlash {
     public function flash() {
         if(isset($_SESSION['flash'])) {
             ?>
-            <div>
+            <div id="alert">
                 <div class="row" id="alert_box">
                     <div class="col s12 m12">
                         <div class="card <?php echo $_SESSION['flash']['type'] ?> darken-1">

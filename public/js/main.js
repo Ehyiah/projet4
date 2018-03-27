@@ -202,7 +202,9 @@ tinymce.init({
 
 // MESSAGE FLASH
 $('#alert_close').click(function(){
-    $("#alert_box").fadeOut( "slow", function() {
-    });
+    $("#alert_box").fadeOut( "slow", function() {});
 });
+
+$('#alert').delay(3000).fadeOut("slow", function() {});
+
 

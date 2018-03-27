@@ -20,10 +20,6 @@
     <div class="divider"></div>
     <div class="divider"></div>
         <h2 id="commentaires">Commentaires</h2>
-        <?php 
-                    $Session = new SessionFlash();
-                    $Session->flash(); 
-                    ?>
 
         <?php
         while ($comment = $comments->fetch())
