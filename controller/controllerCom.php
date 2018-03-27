@@ -15,7 +15,6 @@ function addComment($postId, $author, $comment, $idUser)
         
     $Session = new SessionFlash();
     $Session->setFlash('Le commentaire a bien été ajouté', 'green');
-        displayBill();
     }
 };
 
@@ -25,6 +24,7 @@ function addComment($postId, $author, $comment, $idUser)
         $comManager = new ComManager();
 
         $update = $comManager->signalComDb($id);
+        
         $Session = new SessionFlash();
         $Session->setFlash('Le commentaire a bien été signalé', 'green');
     };

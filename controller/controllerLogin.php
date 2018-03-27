@@ -47,19 +47,22 @@ function displayLogin() {
         }
 
         if (!$resultat) {
-            // echo 'mauvais identifiant ou mot de passe';
             $Session = new SessionFlash();
-            $Session->setFlash('Mauvais identifiant et/ou Mot de passe', 'red');
-        }   
+            $Session->setFlash('Mauvais identifiant (et/ou Mot de passe)', 'red');
+        }  
+        elseif ($resultat != $passCorrect)  {
+            $Session = new SessionFlash();
+            $Session->setFlash('Mauvais identifiant (et/ou Mot de passe)', 'red');
+        }
         else {
             if ($passCorrect) {
                 $_SESSION['ID'] = $resultat['ID'];
                 $_SESSION['PSEUDO'] = $resultat['PSEUDO'];
                 $_SESSION['GROUPE'] = $resultat['GROUPE'];
                 $_SESSION['MAIL'] = $resultat['MAIL'];
-                 // echo 'vous etes maintenant connecté en tant que : ' . $_SESSION['PSEUDO'];
-                 $Session = new SessionFlash();
-                 $Session->setFlash('Vous êtes maintenant connecté en tant que ' . $_SESSION['PSEUDO'], 'green');
+
+                $Session = new SessionFlash();
+                $Session->setFlash('Vous êtes maintenant connecté en tant que ' . $_SESSION['PSEUDO'], 'green');
             }
         }
     };

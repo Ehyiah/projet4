@@ -31,7 +31,7 @@ class SessionFlash {
                 </div>
             </div>
             <?php
-            unset($_SESSION['flash']);
+        unset($_SESSION['flash']);
         }
     }
 

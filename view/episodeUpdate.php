@@ -68,11 +68,24 @@
             while ($reponsepost = $billets->fetch()) {
 
         ?>
-            <a href="index.php?idBill=<?php echo $reponsepost['ID']?>&amp;action=episodeDelete&amp;etatDel=active#deleteEpisode">
+            <a class="modal-trigger" href="#modal3<?php echo $reponsepost['ID']?>">
             <?= $reponsepost['TITRE']; ?></a>
             
             <p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
             <div class="divider"></div>
+
+
+            <!-- modal de suppression -->
+            <div id="modal3<?php echo $reponsepost['ID']?>" class="modal">
+                <div class="modal-content">
+                    <h4>Etes-vous sur de vouloir supprimer cet épisode ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="index.php?idBill=<?php echo $reponsepost['ID']?>&amp;action=episodeDelete&amp;etatDel=active#deleteEpisode" class="modal-action modal-close waves-effect waves-green btn-flat ">Oui</a>
+
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Non</a>
+                </div>
+            </div>
         <?php
             }
             $billets->closeCursor();
@@ -99,9 +112,36 @@
             <p><strong>Auteur du commentaire : </strong> <?= $reponsecom['AUTEUR_COM']?></p>
             <p><strong>Contenu du commentaire : </strong> <?= htmlspecialchars($reponsecom['CONTENU']) ?></p>
             <strong><?= $reponsecom['TITRE_BILLET'] ?></strong>
-            <a href="index.php?action=comDelete&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom">Supprimer le commentaire </a>
-            <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom" onclick="return confirm('Etes-vous sûr ?');"> Valider le commentaire</a>
+
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal2<?php echo $reponsecom['ID_COM']?>">Supprimer </a>
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal<?php echo $reponsecom['ID_COM']?>"> Valider</a>
+
             <div class="divider"></div>
+
+
+                <!-- modal de confirm -->
+                <div id="modal<?php echo $reponsecom['ID_COM']?>" class="modal">
+                    <div class="modal-content">
+                        <h4>Etes-vous sur de vouloir valider ce commentaire ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="index.php?action=comValidate&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom" class="modal-action modal-close waves-effect waves-green btn-flat ">Oui</a>
+
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Non</a>
+                    </div>
+                </div>
+                <!-- modal de suppression -->
+                <div id="modal2<?php echo $reponsecom['ID_COM']?>" class="modal">
+                    <div class="modal-content">
+                        <h4>Etes-vous sur de vouloir supprimer ce commentaire ?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="index.php?action=comDelete&amp;idCom=<?= $reponsecom['ID_COM'] ?>&amp;etatCom=active#signaledCom" class="modal-action modal-close waves-effect waves-green btn-flat ">Oui</a>
+
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Non</a>
+                    </div>
+                </div>
+
         <?php
             }
             $signaledCom->closeCursor();

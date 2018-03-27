@@ -208,3 +208,7 @@ $('#alert_close').click(function(){
 $('#alert').delay(3000).fadeOut("slow", function() {});
 
 
+// MODAL DE CONFIRM
+$(document).ready(function(){
+    $('.modal').modal();
+});

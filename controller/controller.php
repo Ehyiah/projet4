@@ -32,7 +32,11 @@ function displayBill()
             require('view/vueCom.php');
         }
         else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
+            // echo 'Erreur : aucun identifiant de billet envoyé';
+            $Session = new SessionFlash();
+            $Session->setFlash('Erreur : aucun identifiant/identifiant inconnu de billet envoyé', 'red');
+
+            viewHome();
         };
 
     };
