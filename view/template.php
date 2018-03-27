@@ -125,21 +125,21 @@
 					<section class="slider">
 						<ul class="slides">
 							<li>
-								<img src="public/images/diapo/02.jpg">
+								<img src="public/images/diapo/02.jpg" alt="Image Diaporama">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Bienvenue sur le blog de Jean Forteroche</h3>
 									<h5 class="black-text text-darken-3">Retrouvez régulièrement mes dernières publications</h5>
 								</div>
 							</li>
 							<li>
-								<img src="public/images/diapo/01.jpg">
+								<img src="public/images/diapo/01.jpg" alt="Image Diaporama">
 								<div class="caption center-align">
 									<h3 class="black-text text-darken-3">Mon dernier roman</h3>
 									<h5 class="black-text text-darken-3">se déroule sur une terre lointaine</h5>
 								</div>
 							</li>
 							<li>
-								<img src="public/images/diapo/03.jpg">
+								<img src="public/images/diapo/03.jpg" alt="Image Diaporama">
 								<div class="caption right-align">
 									<h3 class="black-text text-darken-3">Alors prenez donc un : </h3>
 									<h5 class="black-text text-darken-3">"Billet simple pour l'Alaska"</h5>
