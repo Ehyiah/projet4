@@ -2,12 +2,20 @@
 
 class ComManager
 {
+    // attribut privé
+    private $_bdd;
+    // fonction de construction appelée automatiquement
+    public function __construct() {
+        $bdd = new DbManager();
+
+        return $this->_bdd = $bdd->dbConnect();
+    }
+
     // fonction pour récupérer les 5 derniers commentaires
     public function getComs5()
     {
-        $bdd = new DbManager();
-
-		$db = $bdd->dbConnect();
+        $db = $this->_bdd;
+        
 		$req = $db->query('SELECT * FROM commentaires ORDER BY ID DESC LIMIT 5');
 
 		return $req;
@@ -16,9 +24,8 @@ class ComManager
     // fonction pour récupérer les commentaires d'un billet
     public function getComments($postId)
     {
-        $bdd = new DbManager();
+        $db = $this->_bdd;
 
-        $db = $bdd->dbConnect();
         $req = $db->prepare('SELECT * FROM commentaires WHERE ID_BILLET = :id ORDER BY ID');
         $req->execute(array(
             'id' => $postId
@@ -31,8 +38,7 @@ class ComManager
     // fonction pour poster un commentaire
     public function postComment($postId, $author, $comment, $idUser)
     {
-        $bdd = new DbManager();
-        $db = $bdd->dbConnect();
+        $db = $this->_bdd;
 
         $comments = $db->prepare('INSERT INTO commentaires(ID_USER, ID_BILLET, AUTEUR, CONTENU) VALUES(:ID_USER, :ID_BILLET, :AUTEUR, :CONTENU)');
         $affectedLines = $comments->execute(array(
@@ -49,8 +55,7 @@ class ComManager
     // fonction pour signaler un commentaire
     public function signalComDb($id)
     {
-        $bdd = new dbManager();
-        $db= $bdd->dbConnect();
+        $db = $this->_bdd;
 
         $req = $db->prepare('UPDATE commentaires SET SIGNALE = 1 WHERE ID = :id');
         $update = $req->execute(array(
@@ -63,8 +68,7 @@ class ComManager
     // fonction pour récupérer les commentaires signalés
     public function signaledComDb()
     {
-        $bdd = new dbManager();
-        $db = $bdd->dbConnect();
+        $db = $this->_bdd;
 
         $signaledCom = $db->query('SELECT c.ID ID_COM, c.ID_BILLET, c.AUTEUR AUTEUR_COM, c.CONTENU, c.SIGNALE, b.ID, b.TITRE TITRE_BILLET, b.AUTEUR AUTEUR_BILLET
         FROM commentaires c
@@ -80,8 +84,7 @@ class ComManager
     // fonction pour supprimer un commentaire de la BDD
     public function deleteSignaledComDb($idCom)
     {
-        $bdd = new dbManager();
-        $db = $bdd->dbConnect();
+        $db = $this->_bdd;
 
         $req = $db->prepare('DELETE FROM commentaires WHERE ID = :id');
         $delete = $req->execute(array(
@@ -94,8 +97,7 @@ class ComManager
     // fonction pour valider un commentaire signalé
     public function acceptSignaledComDb($idCom)
     {
-        $bdd = new dbManager();
-        $db = $bdd->dbConnect();
+        $db = $this->_bdd;
 
         $req = $db->prepare('UPDATE commentaires SET SIGNALE = 0 WHERE ID = :id');
         $update = $req->execute(array(
