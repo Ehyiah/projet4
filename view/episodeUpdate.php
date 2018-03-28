@@ -109,7 +109,7 @@
         <?php 
             while ($reponsecom = $signaledCom->fetch()) {
         ?>
-            <p><strong>Auteur du commentaire : </strong> <?= $reponsecom['AUTEUR_COM']?></p>
+            <p><strong>Auteur du commentaire : </strong> <?= htmlspecialchars($reponsecom['AUTEUR_COM'])?></p>
             <p><strong>Contenu du commentaire : </strong> <?= htmlspecialchars($reponsecom['CONTENU']) ?></p>
             <strong><?= $reponsecom['TITRE_BILLET'] ?></strong>
 

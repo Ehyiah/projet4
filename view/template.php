@@ -67,11 +67,13 @@
 
 
 							<!-- affichage pseudo par session -->
-							<?php
-								if (isset($_SESSION['PSEUDO'])) {
-									echo 'Bonjour ' . $_SESSION['PSEUDO'];
-								};
-							?>
+							<!--
+								<?php
+									if (isset($_SESSION['PSEUDO'])) {
+										echo 'Bonjour ' . htmlspecialchars($_SESSION['PSEUDO']);
+									};
+								?>
+							-->
 						</nav>
 
 					</div>

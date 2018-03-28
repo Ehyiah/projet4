@@ -131,11 +131,11 @@
                     <div class="container">
 
 
-                        <p class="center-align"> Bienvenue <?= $_SESSION['PSEUDO'] ?>, vous êtes maintenant dans votre espace personnel</p>
+                        <p class="center-align"> Bienvenue <?= htmlspecialchars($_SESSION['PSEUDO']) ?>, vous êtes maintenant dans votre espace personnel</p>
                         <div class="divider"></div>
 
                         <!-- on affiche ici ce que l'utilisateur standard va avoir besoin dans son espace perso -->
-                        <p>Votre Pseudo : <?= $_SESSION['PSEUDO'] ?></p>
+                        <p>Votre Pseudo : <?= htmlspecialchars($_SESSION['PSEUDO']) ?></p>
                         <p>Votre e-mail : <?= $_SESSION['MAIL'] ?></p>
 
                         <!-- liste des commentaires deja postés par le membre -->

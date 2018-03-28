@@ -53,7 +53,7 @@
 
 								?>
 									<!-- <p>ID : <?php echo $reponsepost['ID']; ?></p> -->
-									<p>Auteur : <?php echo $reponsepost['AUTEUR']; ?></p>
+									<p>Auteur : <?php echo htmlspecialchars($reponsepost['AUTEUR']); ?></p>
 									<p>Titre : <?php echo strip_tags($reponsepost['TITRE']); ?></p>
 									<div class="divider"></div>
 								<?php
@@ -74,7 +74,7 @@
 									while ($reponsecomm = $comm->fetch()) {
 								?>
 									<!-- <p>ID : <?php echo $reponsecomm['ID']; ?> </p> -->
-									<p>Auteur : <?php echo $reponsecomm['AUTEUR']; ?> </p>
+									<p>Auteur : <?php echo htmlspecialchars($reponsecomm['AUTEUR']); ?> </p>
 									<p>Commentaire : <?php echo htmlspecialchars($reponsecomm['CONTENU']); ?> </p>
 
 									<div class="divider"></div>

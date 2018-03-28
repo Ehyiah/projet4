@@ -25,7 +25,7 @@
         while ($comment = $comments->fetch())
         {
         ?>
-            <p><strong><?= $comment['AUTEUR'] ?></strong> le <?= $comment['DATE'] ?></p>
+            <p><strong><?= htmlspecialchars($comment['AUTEUR']) ?></strong> le <?= $comment['DATE'] ?></p>
             <p><?= htmlspecialchars($comment['CONTENU']) ?></p>
             <a href="index.php?action=signalCom&amp;idCom=<?= $comment['ID']?>#commentaires">signaler le commentaire</a>
         <?php
