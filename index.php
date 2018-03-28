@@ -20,7 +20,6 @@ if (isset($_GET['action'])) {
 
             }
             else {
-                // echo 'Erreur : tous les champs ne sont pas remplis !';
                 $Session = new SessionFlash();
                 $Session->setFlash('Erreur : Tous les champs ne sont pas remplis !', 'red');
                 header("Location: ".$_SERVER['HTTP_REFERER']."");
@@ -80,7 +79,6 @@ if (isset($_GET['action'])) {
 
             viewHome();
         }
-
     }
 
     // publication nouvel épisode
