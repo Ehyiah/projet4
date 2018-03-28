@@ -9,7 +9,6 @@ function displayLogin() {
     $billMenu = $postManager->billMenu();
 
     if (isset($_SESSION['ID'])) {
-
         $comUser = $logManager->getComUserdB($_SESSION['ID']);
     }
 
@@ -18,15 +17,7 @@ function displayLogin() {
 };
 
 
-// fonction pour utilisateur deja enregistré
-    function displayLoginError($etat) {
-        $postManager = new PostManager();
-
-        $billMenu = $postManager->billMenu();
-        require ('view/login.php');
-    };
-
-// fonction login pour récupérer les infos depuis la BDD
+// fonction login pour récupérer les infos sur le nom fourni lors de la connection depuis la BDD
     function testLogIn($test)
     {
         $loginManager = new LoginManager();
@@ -95,4 +86,3 @@ function displayLogin() {
         $comUser = $loginManager->getComUserdB($id);
     };
 
-//

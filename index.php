@@ -71,7 +71,16 @@ if (isset($_GET['action'])) {
 
     // affichage billet
     elseif ($_GET['action'] == 'bill') {
-        displayBill();
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            displayBill();
+        } else {
+            // message erreur
+            $Session = new SessionFlash();
+            $Session->setFlash('Erreur : aucun identifiant/identifiant inconnu de billet envoyé', 'red');
+
+            viewHome();
+        }
+
     }
 
     // publication nouvel épisode

@@ -107,8 +107,8 @@
 		<!-- CONTENU CENTRAL DU SITE -->
 
 		<?php 
-                    $Session = new SessionFlash();
-                    $Session->flash(); 
+			$Session = new SessionFlash();
+			$Session->flash(); 
 		?>
 		
 			<div class="container">

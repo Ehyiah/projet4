@@ -9,7 +9,8 @@ function addComment($postId, $author, $comment, $idUser)
     $affectedLines = $comManager->postComment($postId, $author, $comment, $idUser);
 
     if ($affectedLines === false) {
-        die('Impossible d\'ajouter le commentaire !');
+        $Session = new SessionFlash();
+        $Session->setFlash('Impossible d\'ajouter le commentaire', 'red');
     }
     else {
         
@@ -45,6 +46,7 @@ function signaledCom() {
         $comManager = new ComManager();
 
         $idCom = $comManager->deleteSignaledComDb($idCom);
+
         $Session = new SessionFlash();
         $Session->setFlash('Le commentaire a bien été supprimé', 'red');
     };
@@ -54,6 +56,7 @@ function signaledCom() {
         $comManager = new ComManager();
 
         $accept = $comManager->acceptSignaledComDb($idCom);
+        
         $Session = new SessionFlash();
         $Session->setFlash('Le commentaire a bien été validé', 'green');
     };
