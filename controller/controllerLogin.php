@@ -62,7 +62,7 @@ function displayLogin() {
                 $_SESSION['MAIL'] = $resultat['MAIL'];
 
                 $Session = new SessionFlash();
-                $Session->setFlash('Vous êtes maintenant connecté en tant que ' . $_SESSION['PSEUDO'], 'green');
+                $Session->setFlash('Vous êtes maintenant connecté en tant que ' . htmlspecialchars($_SESSION['PSEUDO']), 'green');
             }
         }
     };
