@@ -23,7 +23,7 @@
                                             <label for="password">Password</label>
                                         </div>
 
-                                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                        <button class="btn waves-effect waves-light" type="submit" name="action">Connection
                                             <i class="material-icons right">send</i>
                                         </button>
                                     </form>
@@ -36,12 +36,12 @@
                                     <div class="collapsible-body">
                                         <form action="index.php?action=signUp" method="post">
                                             <div class="input-field col s12">
-                                                <input id="name" type="text" name="nom"/>
+                                                <input id="nameUP" type="text" name="nom"/>
                                                 <label for="name">Nom</label>
                                             </div>
                                             
                                             <div class="input-field col s12">
-                                                <input id="password" type="password" name="mot_de_passe"/>
+                                                <input id="passwordUP" type="password" name="mot_de_passe"/>
                                                 <label for="password">Password</label>
                                             </div>
                                             
@@ -50,7 +50,7 @@
                                                 <label for="email">e-mail</label>
                                             </div>
 
-                                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                            <button class="btn waves-effect waves-light" type="submit" name="action">S'enregistrer
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </form>
