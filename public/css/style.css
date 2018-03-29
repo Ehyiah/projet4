@@ -114,3 +114,8 @@
         z-index: 1050;
         width: 100%;
     }
+
+    /* correction affichage framework materialize */
+    strong {
+        font-weight: bold;
+    }
