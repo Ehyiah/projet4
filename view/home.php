@@ -24,8 +24,10 @@
 						while ($donnees = $firstBill->fetch()) {
 					?>
 						<div class="divider"></div>
-						<p><strong>Titre du premier épisode : </strong><?php echo strip_tags($donnees['TITRE']);?></p>
-
+						
+						<div class="center-align">
+							<?php echo ($donnees['TITRE']);?></p>
+						</div>
 						<?= $donnees['CONTENU'] ?>
 
 						<div class="divider"></div>
