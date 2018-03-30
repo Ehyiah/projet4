@@ -1,6 +1,7 @@
 
 
 <!-- partie concernant la modification des épisodes -->
+<!-- updating episode -->
     <?php
     $postManager = new PostManager();
     $billets = $postManager->getPosts();
@@ -9,6 +10,7 @@
     <?php ob_start() ?>
 
     <!-- affichier la liste des épisodes -->
+    <!-- show list of episodes -->
     <p><strong>Sélectionnez l'épisode à modifier</strong></p>
     <div class="divider"></div>
 
@@ -56,12 +58,14 @@
 
 
 <!-- partie concernant la suppression des épisodes -->
+<!-- delete episodes -->
     <?php
     $billets = $postManager->getPosts();
     ?>
 
     <?php ob_start(); ?>
     <!-- liste des épisodes à supprimer -->
+    <!-- list of episodes to delete -->
     <p><strong>Sélectionnez l'épisode à supprimer</strong></p>
 
         <?php 
@@ -100,6 +104,7 @@
 
 
 <!-- partie concernant la modération des commentaires signalés -->
+<!-- manage comments -->
     <?php 
     $comManager = new ComManager();
     $signaledCom = $comManager->signaledComDb() 

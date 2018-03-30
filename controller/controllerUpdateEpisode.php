@@ -4,6 +4,7 @@ require_once('model/modelPost.php');
 
 
 // fonction pour supprimer un episode
+// delete episode
     function deleteEpisode($idBillet) {
         $postManager = new PostManager();
 
@@ -16,6 +17,7 @@ require_once('model/modelPost.php');
 
 
 // fonction pour modifier un épisode
+// update episode
     function updateEpisode($id, $titre, $contenu) {
         $postManager = new PostManager();
 

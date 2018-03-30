@@ -2,6 +2,7 @@
 require_once('model/modelPost.php');
 
 // fonction de publication de nouvel épisode
+// publish new episode
 
 function newEpisode($titreEpisode, $contenuEpisode)
     {

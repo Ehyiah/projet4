@@ -2,6 +2,7 @@
 require_once('model/modelCom.php');
 
 // ajout d'un commentaire
+// add new comment
 function addComment($postId, $author, $comment, $idUser)
 {
     $comManager = new ComManager();
@@ -21,6 +22,7 @@ function addComment($postId, $author, $comment, $idUser)
 
 
 // signaler un commentaire
+// signal a comment
     function signalCom($id) {
         $comManager = new ComManager();
 
@@ -34,6 +36,7 @@ function addComment($postId, $author, $comment, $idUser)
     
 
 // fonction pour afficher les commentaires signalés dans backend
+// show signaled comments in backend
 function signaledCom() {
     $comManager = new ComManager();
 
@@ -42,6 +45,7 @@ function signaledCom() {
 };
 
 // fonction pour supprimer un commentaire signalé
+// delete signaled comment
     function deleteSignaledCom($idCom) {
         $comManager = new ComManager();
 
@@ -52,6 +56,7 @@ function signaledCom() {
     };
 
 // fonction pour accepter un commentaire signalé
+// approve signaled comment
     function acceptSignaledCom($idCom) {
         $comManager = new ComManager();
 

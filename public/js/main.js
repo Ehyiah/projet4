@@ -1,4 +1,4 @@
-// INITIALISATION DU CAROUSEL
+// INITIALISATION CAROUSEL
     $(document).ready(function(){
         $('.carousel').carousel({
             duration : 300,
@@ -68,7 +68,7 @@
         ]
     });
 
-// INITIALISATION TINYMCE pour titre episode
+// INITIALISATION TINYMCE for episode title
     tinymce.init({
         selector: '#mytexttitle',
         language: 'fr_FR',
@@ -110,15 +110,14 @@
     });
 
 
-// INITIALISATION DES MODALS DE CONFIRMATION
+// INITIALISATION MODALS CONFIRMATION
 $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
   });
 
   
-// MODIFICATION EPISODES
-// INITIALISATION TINYMCE pour titre episode
+// UPDATE EPISODES
+// INITIALISATION TINYMCE for episode title
 tinymce.init({
     selector: '.mytexttitleUpdate',
     language: 'fr_FR',
@@ -208,7 +207,7 @@ $('#alert_close').click(function(){
 $('#alert').delay(3000).fadeOut("slow", function() {});
 
 
-// MODAL DE CONFIRM
+// MODAL CONFIRM
 $(document).ready(function(){
     $('.modal').modal();
 });

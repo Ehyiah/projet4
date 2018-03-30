@@ -2,6 +2,7 @@
 require_once('model/modelLogin.php');
 
 // page de connection et membres
+// login page and member page
 function displayLogin() {
     $postManager = new PostManager();
     $logManager = new LoginManager();
@@ -18,6 +19,7 @@ function displayLogin() {
 
 
 // fonction login pour récupérer les infos sur le nom fourni lors de la connection depuis la BDD
+// function for Login and get infos on user from DB
     function testLogIn($test)
     {
         $loginManager = new LoginManager();
@@ -28,6 +30,7 @@ function displayLogin() {
     }
 
 // fonction pour la connection de l'utilisateur si mot de passe correspond
+// function to connect user if password is correct
     function authUser($resultat) {
         $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
 
@@ -62,6 +65,7 @@ function displayLogin() {
 
 
 // fonction de vérification et de création de nouveaux membres
+// check if user exist and create new user
     function registerUser($nom,$mot_de_passe,$email) {
         $loginManager = new LoginManager();
 
@@ -80,6 +84,7 @@ function displayLogin() {
 
 
 // fonction pour renvoyer les commentaires d'un USER dans espace membre
+// function for showing comments of connected member
     function getComUser($id) {
         $loginManager = new LoginManager();
 

@@ -32,16 +32,16 @@
     </head>
 
     <body>
-		<!-- HEADER AVEC MENU -->
+		<!-- HEADER AND MENU -->
 			<header>
-				<!-- menu classique desktop -->
+				<!-- menu desktop -->
 					<div class="navbar-fixed" id="menuDesktop">
 						<nav>
 							<a href="http://projet4.gostiaux.net" id="logo">
 								<img src="public/images/logo.png" alt="Logo du site">
 							</a>
 
-							<!-- contenu menu déroulant pour les épisodes -->
+							<!-- collapse menu content -->
 								<ul id="dropdown1" class="dropdown-content">
 									<?php echo $contentMenu ?>
 								</ul>
@@ -68,7 +68,7 @@
 
 					</div>
 
-				<!-- menu mobile responsive -->
+				<!-- menu responsive -->
 					<div id="menuMobile">
 						<nav>
 							<div class="nav-wrapper" class="navbar-fixed">
@@ -78,7 +78,7 @@
 									<a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 							</div>
 						</nav>
-							<!-- elements du menu responsive -->
+							<!-- contents for responsive menu -->
 								<ul id="dropdown2" class="dropdown-content">
 									<?php echo $contentMenu ?>
 								</ul>
@@ -104,7 +104,7 @@
 			</header>
 
 
-		<!-- CONTENU CENTRAL DU SITE -->
+		<!-- MAIN -->
 
 		<?php 
 			$Session = new SessionFlash();
@@ -149,7 +149,7 @@
 
 
 
-			</div>	<!-- fin container -->
+			</div>	<!-- end container -->
 
 
 		<!-- FOOTER -->

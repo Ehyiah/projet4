@@ -2,9 +2,9 @@
 
 class LoginManager
 {
-    // attribut privé
+    // private attribute
     private $_bdd;
-    // fonction de construction appelée automatiquement
+
     public function __construct() {
         $bdd = new DbManager();
 
@@ -12,6 +12,7 @@ class LoginManager
     }
 
     // fonction pour login
+    // Login function
     public function login($pseudo)
     {
         $db = $this->_bdd;
@@ -26,6 +27,7 @@ class LoginManager
 
 
     // fonction pour vérifier si un USER existe
+    // check if user already exist before creating
     public function checkIfUserExist($nom) 
     {
         $db = $this->_bdd;
@@ -41,6 +43,7 @@ class LoginManager
 
 
     // fonction pour créer un nouvel utilisateur
+    // create new user
     public function createNewUser($nom, $mot_de_passe, $email) {
         $db = $this->_bdd;
 
@@ -56,6 +59,7 @@ class LoginManager
 
 
     // fonction pour récupérer les commentaires d'un membre
+    // get comments of connected member
     public function getComUserdB($id) {
         $db = $this->_bdd;
     

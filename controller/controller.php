@@ -4,6 +4,7 @@ require_once('model/dbManager.php');
 
 
 // affichage page accueil et premier billet
+// show Homepage and first episode
 function viewHome()
     {
         $postManager = new PostManager();
@@ -19,6 +20,7 @@ function viewHome()
 
 
 // affichage d'un billet et ses commentaires
+// show bill and related comments
 function displayBill() 
     {
         $postManager = new PostManager();

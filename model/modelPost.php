@@ -2,9 +2,9 @@
 
 class PostManager
 {
-	// attribut privé
+    // private attribute
 	private $_bdd;
-	// fonction de construction appelée automatiquement
+
 	public function __construct() {
 		$bdd = new DbManager();
 
@@ -13,6 +13,7 @@ class PostManager
 
 
 	// fonction pour récupérer tous les billets
+	// get all bills
 	public function getPosts()
 	{
         $db = $this->_bdd;
@@ -23,6 +24,7 @@ class PostManager
 	}
 
 	// fonction pour récupérer un billet
+	// get a bill
 	public function getPost($id)
 	{
         $db = $this->_bdd;
@@ -38,6 +40,7 @@ class PostManager
 	}
 
 	// fonction pour récupérer le premier billet
+	// get first bill
 	public function getFirstPost()
 	{
         $db = $this->_bdd;
@@ -48,6 +51,7 @@ class PostManager
 	}
 
 	// fonction pour récupérer les 5 derniers billets
+	// get last 5 bills
 	public function getPost5()
 	{
         $db = $this->_bdd;
@@ -59,6 +63,7 @@ class PostManager
 
 
 	// fonction pour ajouter les billets dans le menu
+	// get bills title in menu
 	public function billMenu()
 	{
         $db = $this->_bdd;
@@ -70,6 +75,7 @@ class PostManager
 
 
 	// fonction pour publier un nouvel épisode
+	// publish new episode
 	public function publishEpisode($titre, $contenu)
 	{
         $db = $this->_bdd;
@@ -86,6 +92,7 @@ class PostManager
 	}
 
 	// fonction pour supprimer un épisode et les commentaires associés
+	// delete a bill and related comments
 	public function deleteEpisodeDb($idBillet)
 	{
         $db = $this->_bdd;
@@ -101,10 +108,10 @@ class PostManager
             'id' => $idBillet
         ));
 
-        // return $delete;
 	}
 
 	// fonction pour mettre à jour un épisode
+	// update an episode
 	public function updateEpisodeDb($id, $titre, $contenu)
 	{
         $db = $this->_bdd;
