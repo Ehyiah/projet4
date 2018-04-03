@@ -47,11 +47,12 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'signUp') {
         // check if user already exist // create new user
         if (isset($_POST['nom']) && $_POST['mot_de_passe'] && $_POST['email']) {
-            $etat = registerUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
+            registerUser($_POST['nom'], $_POST['mot_de_passe'], $_POST['email']);
         } else {
             // error message
             $Session = new SessionFlash();
-            $Session->setFlash('Erreur : Tous les champs ne sont pas remplis !', 'red');        }
+            $Session->setFlash('Erreur : Tous les champs ne sont pas remplis !', 'red');        
+        }
         
         displayLogin();
 
