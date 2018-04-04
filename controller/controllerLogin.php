@@ -33,6 +33,7 @@ function displayLogin() {
 // function to connect user if password is correct
     function authUser($resultat) {
         $passCorrect = password_verify($_POST['mot_de_passe'], $resultat['PASS']);
+        var_dump($_POST['mot_de_passe']);
 
         if ($_POST['mot_de_passe'] == $passCorrect) {
             $passCorrect = true;
@@ -44,6 +45,10 @@ function displayLogin() {
             $Session = new SessionFlash();
             $Session->setFlash('Mauvais identifiant (et/ou Mot de passe)', 'red');
         }  
+        elseif (empty($_POST['mot_de_passe'])) {
+            $Session = new SessionFlash();
+            $Session->setFlash('Mauvais identifiant (et/ou Mot de passe)', 'red');
+        }
         elseif ($resultat != $passCorrect)  {
             $Session = new SessionFlash();
             $Session->setFlash('Mauvais identifiant (et/ou Mot de passe)', 'red');
